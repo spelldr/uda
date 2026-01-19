@@ -1,0 +1,162 @@
+name: Documentation Quality Gate
+
+on:
+  pull_request:
+    paths:
+      - '**.md'
+      - '.github/workflows/quality.yml'
+      - '.markdownlint.yml'
+      - '.cspell.json'
+      - '.editorconfig'
+
+jobs:
+  markdown-lint:
+    runs-on: ubuntu-latest
+    name: Markdown Linting
+    steps:
+      - uses: actions/checkout@v4
+      - uses: nosborn/github-action-markdown-cli@v3.3.0
+        with:
+          files: .
+          config_file: .markdownlint.yml
+
+  spell-check:
+    runs-on: ubuntu-latest
+    name: Spell Check
+    steps:
+      - uses: actions/checkout@v4
+      - uses: streetsidesoftware/cspell-action@v1
+        with:
+          config: .cspell.json
+          files: '**/*.md'
+          inline: true
+
+  metadata-validation:
+    runs-on: ubuntu-latest
+    name: Metadata Schema Validation
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate YAML frontmatter
+        run: |
+          python -c "
+          import os
+          import re
+          import yaml
+          
+          required_fields = ['title', 'description', 'tags', 'owner', 'status', 'last_verified', 'review_cycle', 'type']
+          valid_statuses = ['current', 'deprecated', 'draft', 'review']
+          valid_types = ['task', 'concept', 'reference', 'troubleshooting', 'runbook', 'release-notes', 'adr', 'glossary']
+          valid_cycles = ['monthly', 'quarterly', 'annual']
+          
+          errors = []
+          for root, dirs, files in os.walk('.'):
+              for file in files:
+                  if file.endswith('.md') and 'node_modules' not in root:
+                      path = os.path.join(root, file)
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+                          if match:
+                              try:
+                                  frontmatter = yaml.safe_load(match.group(1))
+                                  for field in required_fields:
+                                      if field not in frontmatter:
+                                          errors.append(f'{path}: Missing required field \"{field}\"')
+                                  if frontmatter.get('status') not in valid_statuses:
+                                      errors.append(f'{path}: Invalid status \"{frontmatter.get(\"status\")}\"')
+                                  if frontmatter.get('type') not in valid_types:
+                                      errors.append(f'{path}: Invalid type \"{frontmatter.get(\"type\")}\"')
+                                  if frontmatter.get('review_cycle') not in valid_cycles:
+                                      errors.append(f'{path}: Invalid review_cycle \"{frontmatter.get(\"review_cycle\")}\"')
+                              except yaml.YAMLError as e:
+                                  errors.append(f'{path}: Invalid YAML frontmatter: {e}')
+                          else:
+                              if file != 'README.md' and file != 'CONTRIBUTING.md':
+                                  errors.append(f'{path}: Missing YAML frontmatter')
+          
+          if errors:
+              for error in errors:
+                  print(f'::error::{error}')
+              exit(1)
+          "
+
+  link-check:
+    runs-on: ubuntu-latest
+    name: Internal Link Validation
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for broken links
+        run: |
+          python -c "
+          import os
+          import re
+          
+          errors = []
+          files = {}
+          
+          # First pass: collect all markdown files
+          for root, dirs, filenames in os.walk('.'):
+              for filename in filenames:
+                  if filename.endswith('.md'):
+                      path = os.path.join(root, filename).replace('\\\\', '/')
+                      files[path] = True
+          
+          # Second pass: check links
+          for root, dirs, filenames in os.walk('.'):
+              for filename in filenames:
+                  if filename.endswith('.md'):
+                      path = os.path.join(root, filename)
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          links = re.findall(r'\[.*?\]\((.*?)\)', content)
+                          for link in links:
+                              # Skip external links
+                              if link.startswith('http') or link.startswith('#'):
+                                  continue
+                              # Normalize path
+                              if '#' in link:
+                                  link = link.split('#')[0]
+                              if link and not link.startswith('http'):
+                                  # Try to find the file
+                                  if link not in files and not any(k.endswith(link) for k in files):
+                                      errors.append(f'{path}: Broken link to \"{link}\"')
+          
+          if errors:
+              for error in errors:
+                  print(f'::error::{error}')
+              exit(1)
+          "
+
+  draft-check:
+    runs-on: ubuntu-latest
+    name: Check for Draft Pages
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure no draft pages in release
+        run: |
+          python -c "
+          import os
+          import re
+          import yaml
+          
+          errors = []
+          for root, dirs, files in os.walk('.'):
+              for file in files:
+                  if file.endswith('.md') and 'node_modules' not in root:
+                      path = os.path.join(root, file)
+                      with open(path, 'r', encoding='utf-8') as f:
+                          content = f.read()
+                          match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+                          if match:
+                              try:
+                                  frontmatter = yaml.safe_load(match.group(1))
+                                  if frontmatter.get('status') in ['draft', 'review']:
+                                      errors.append(f'{path}: Cannot release with status=\"{frontmatter.get(\"status\")}\"')
+                              except:
+                                  pass
+          
+          if errors:
+              for error in errors:
+                  print(f'::error::{error}')
+              exit(1)
+          "
