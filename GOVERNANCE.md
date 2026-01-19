@@ -26,12 +26,11 @@ That's it. No committees, no lengthy reviews. Just clarity on who decides what.
 - **Minor** (new templates): Quarterly
 - **Major** (routing changes): Annually or as needed
 
-See CONTRIBUTING.md for contribution details.
-- Use the correct content type and template.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution details.
 
 ---
 
-## 5. Conflict Resolution
+## Conflict Resolution
 
 1. Discuss the issue in the relevant GitHub thread.
 2. If unresolved, escalate to maintainers.
@@ -40,7 +39,7 @@ See CONTRIBUTING.md for contribution details.
 
 ---
 
-## 6. Transparency
+## Transparency
 
 All governance decisions, structural changes, and release notes are documented publicly in:
 
@@ -51,10 +50,4 @@ All governance decisions, structural changes, and release notes are documented p
 
 ---
 
-## 7. Amendments
-
-Any changes to this governance model require:
-
-- A governance‑type issue.
-- A pull request referencing that issue.
-- Unanimous maintainer approval.
+## Amendments

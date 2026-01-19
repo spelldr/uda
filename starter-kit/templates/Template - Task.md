@@ -3,8 +3,8 @@ title: Task - [Action/Goal]
 description: Step-by-step instructions for [completing the task].
 tags: ["how-to", "getting-started"]
 owner: @your-github-handle
-status: draft
-last_verified: 2026-01-19
+status: current
+last_verified: 2024-01-15
 review_cycle: quarterly
 type: task
 ---

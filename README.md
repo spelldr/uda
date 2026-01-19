@@ -85,9 +85,9 @@ See [GOVERNANCE.md](GOVERNANCE.md) for roles and decisions.
 
 ## Learn More
 
-- **Routing discipline:** `starter-kit/governance/routing-matrix.md`
-- **Metadata requirements:** `starter-kit/governance/metadata-schema.yaml`
-- **Full doctrine:** `UDA - Template/DOCUMENTATION_DOCTRINE.md`
+- **Routing discipline:** [starter-kit/governance/routing-matrix.md](starter-kit/governance/routing-matrix.md)
+- **Metadata requirements:** [starter-kit/governance/metadata-schema.yaml](starter-kit/governance/metadata-schema.yaml)
+- **Full doctrine:** [UDA - Template/DOCUMENTATION_DOCTRINE.md](UDA%20-%20Template/DOCUMENTATION_DOCTRINE.md)
 
 ---
 

@@ -3,8 +3,8 @@ title: Concept - [Topic]
 description: Explains [what this concept is and why it matters].
 tags: ["concepts", "getting-started"]
 owner: @your-github-handle
-status: draft
-last_verified: 2026-01-19
+status: current
+last_verified: 2024-01-15
 review_cycle: quarterly
 type: concept
 ---

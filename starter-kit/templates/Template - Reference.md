@@ -3,9 +3,9 @@ title: Reference - [API/Fields/Configuration]
 description: Complete field and configuration reference for [system or API].
 tags: ["reference", "api"]
 owner: @your-github-handle
-status: draft
-last_verified: 2026-01-19
-review_cycle: annual
+status: current
+last_verified: 2024-01-15
+review_cycle: quarterly
 type: reference
 ---
 

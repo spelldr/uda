@@ -1,0 +1,47 @@
+# Markdownlint configuration for UDA
+# Enforces consistency, clarity, and contributor discipline.
+
+# Default rule settings
+default: true
+
+# Rules to disable (UDA‑specific rationale below)
+MD013: false   # Line length — disabled because UDA uses tables and metadata blocks
+MD033: false   # Inline HTML — allowed for controlled cases (e.g., <details>)
+MD041: false   # First line heading — Starter Kit templates may begin with metadata
+
+# Rules with custom configuration
+MD004:
+  style: dash   # Enforce "-" for unordered lists
+
+MD007:
+  indent: 2     # Consistent list indentation
+
+MD024:
+  siblings_only: true   # Allow same headings in different sections
+
+MD026:
+  punctuation: ".,;:!?"  # Allow common punctuation in headings
+
+MD029:
+  style: ordered         # Enforce ordered list numbering style
+
+MD030:
+  ul_single: 1
+  ol_single: 1
+  ul_multi: 1
+  ol_multi: 1
+
+MD046:
+  style: fenced          # Require fenced code blocks (```)
+
+# UDA‑specific expectations
+MD001: true   # Heading levels must increment by one
+MD002: true   # First heading must be H1 (except metadata‑prefixed files)
+MD003: true   # Heading style consistency
+MD009: true   # No trailing spaces
+MD010: true   # No hard tabs
+MD012: true   # No multiple consecutive blank lines
+MD018: true   # No space before heading hashes
+MD019: true   # One space after heading hashes
+MD022: true   # Headings must be surrounded by blank lines
+MD032: true   # Lists must be surrounded by blank lines

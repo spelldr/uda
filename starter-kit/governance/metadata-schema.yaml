@@ -1,0 +1,60 @@
+# UDA Metadata Schema
+# Defines required fields, allowed values, and validation rules.
+
+required_fields:
+  - title
+  - description
+  - tags
+  - owner
+  - review_cycle
+
+fields:
+  title:
+    type: string
+    rules:
+      - must_be_unique_within_routing_path: true
+      - max_length: 80
+
+  description:
+    type: string
+    rules:
+      - single_sentence: true
+      - no_conjunctions: true
+      - max_length: 160
+
+  tags:
+    type: list
+    allowed_values:
+      - concept
+      - procedure
+      - reference
+      - template
+      - architecture
+      - governance
+      - onboarding
+      - troubleshooting
+      - glossary
+      - workflow
+      - metadata
+      - routing
+    rules:
+      - must_use_controlled_vocabulary: true
+      - min_items: 1
+      - max_items: 5
+
+  owner:
+    type: string
+    rules:
+      - must_be_github_handle_or_team: true
+
+  review_cycle:
+    type: string
+    allowed_values:
+      - monthly
+      - quarterly
+      - annual
+
+validation:
+  enforce_required_fields: true
+  enforce_allowed_values: true
+  enforce_rules: true

@@ -25,78 +25,80 @@ type: task
 ---
 ```
 
+See [starter-kit/governance/metadata-schema.yaml](starter-kit/governance/metadata-schema.yaml) for complete schema.
+
 ## Content Types
 
 - **Task** — How-to guides (step-by-step)
 - **Concept** — Explanations (what and why)
 - **Reference** — Lookup (fields, API)
+- **Troubleshooting** — Problem diagnosis and resolution
+- **Runbook** — Operational procedures
+- **Release Notes** — Version changes
+- **ADR** — Architecture Decision Records
+- **Glossary** — Term definitions
 
 Pick one per page. No mixing.
 
 ## Routing
 
-- **"How do I...?"** → Task folder
-- **"What is...?"** → Concept folder
-- **"What are the fields?"** → Reference folder
+Use the routing matrix to place your page:
 
-See `starter-kit/governance/routing-matrix.md` for details.
+- **"How do I...?"** → Task folder (20-Tasks/)
+- **"What is...?"** → Concept folder (30-Concepts/)
+- **"What are the fields?"** → Reference folder (40-Reference/)
+- **"How do I fix...?"** → Troubleshooting folder (50-Troubleshooting/)
+- **"How do I operate...?"** → Runbook folder (60-Platform-Ops/)
+- **"What changed?"** → Release Notes folder (70-Release-Upgrade/)
+- **"Why did we choose...?"** → ADR folder (80-ADRs/)
+- **"What does this mean?"** → Glossary folder (90-Glossary/)
+
+See [starter-kit/governance/routing-matrix.md](starter-kit/governance/routing-matrix.md) for full details.
 
 ## Before You Submit
 
-- [ ] Uses one of the three templates
+- [ ] Uses one of the templates
 - [ ] Has all required metadata
 - [ ] Title clearly states the intent
-- [ ] Routed to correct folder
-- [ ] No mixing content types
-- [ ] Links work
+- [ ] Routed to correct folder per routing matrix
+- [ ] Pure content type (no mixing Task/Concept/Reference)
+- [ ] Internal links follow routing rules
+- [ ] No Task-to-Task links (use Concepts as bridge)
+- [ ] Links work (no broken references)
 - [ ] Spell check passes
+
+## Structure & Formatting
+
+- [ ] Uses appropriate template for page type
+- [ ] Headings follow hierarchy (no skipped levels)
+- [ ] Code blocks are properly formatted with language identifier
+- [ ] Lists are consistently formatted (bullets or numbers as appropriate)
+- [ ] No walls of text; content is scannable
+- [ ] Images have alt text (accessibility)
+- [ ] Tables are properly formatted and readable
+
+## Linking & Navigation
+
+- [ ] Links follow routing matrix rules
+- [ ] No Task-to-Task links (use Concepts as bridge)
+- [ ] No circular links (A → B → A)
+- [ ] All links point to existing pages
+
+See [starter-kit/governance/routing-matrix.md](starter-kit/governance/routing-matrix.md) for linking discipline.
 
 ## Review
 
-A maintainer will review and approve. That's all.
+A maintainer will review using the [review checklist](starter-kit/governance/review-checklist.md). That's all.
 
-## 4. Routing Rules
+## Approval Rules
 
-Routing determines where a page lives and how it is discovered.
+- **Routine changes:** 1 maintainer approval  
+- **Structural changes** (routing, metadata schema, Starter Kit): 2 maintainers  
+- **Governance changes:** Unanimous maintainer approval  
 
-- One intent per directory.
-- No nested conceptual pages.
-- Procedures must live under `/docs/procedures`.
-- References must live under `/docs/reference`.
-- Templates must live under `/starter-kit/templates`.
-- Governance artifacts must live under `/starter-kit/governance`.
+## Code of Conduct
 
-Full rules are defined in `/starter-kit/governance/routing-rules.md`.
-
-## 5. Style Expectations
-
-- Keep narrative minimal.
-- Use tables for structured information.
-- Use headings consistently (`##` for sections, `###` for subsections).
-- Avoid blended content types.
-- Keep paragraphs short and scannable.
-- Use active voice.
-- Avoid idioms, metaphors, or conversational tone in documentation pages.
-
-## 6. Review Requirements
-
-All pull requests must:
-
-- Pass CI checks (lint, spellcheck, link validation).
-- Include a clear intent statement.
-- Reference an issue.
-- Use the PR template.
-- Follow routing and metadata rules.
-
-### Approval Rules
-
-- Routine changes: 1 maintainer  
-- Structural changes (routing, metadata schema, Starter Kit): 2 maintainers  
-- Governance changes: unanimous maintainer approval  
-
-## 7. Code of Conduct
-
-All contributors must follow the Code of Conduct in `/CODE_OF_CONDUCT.md`.
+All contributors must follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## 8. Questions or Proposals
 
