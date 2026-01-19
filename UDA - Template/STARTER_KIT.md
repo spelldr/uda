@@ -15,7 +15,7 @@ Do this before you touch any files.
 
 ### 0.1: Read the Doctrine (MANDATORY)
 
-Before you proceed, study the [[DOCUMENTATION_DOCTRINE]]. _(TOC below)_
+Before you proceed, study the [DOCUMENTATION_DOCTRINE](UDA%20-%20Template/DOCUMENTATION_DOCTRINE.md). _(TOC below)_
 
 This doctrine defines the non‑negotiable rules that keep UDA systems maintainable.  
 Violating them breaks the system. The Starter Kit assumes you follow these rules.
@@ -50,7 +50,7 @@ _The non-negotiable rules that make UDA systems work._
 
 ### 0.2 Learn the routing matrix
 
-Here’s a **condensed routing table** version of the [[DOCUMENTATION_DOCTRINE|doctrine]]’s routing discipline. 
+Here’s a **condensed routing table** version of the [doctrine](UDA%20-%20Template/DOCUMENTATION_DOCTRINE.md)’s routing discipline. 
 
 |User Intent|Section|Page Type|Allowed Links →|
 |---|---|---|---|
@@ -163,18 +163,18 @@ your-kb/
 
 Create a template for each section:
 
-- [[Template - Task.md]]
-- [[Template - Concept.md]]
-- [[Template - Reference.md]]
-- [[Template - Troubleshooting.md]]
-- [[Template - Runbook.md]]
-- [[Template - Release Notes.md]]
-- [[Template - ADR.md]]
-- [[Template - Tutorial.md]]
+- [Template - Task.md](00-Start/Templates/Template%20-%20Task.md)
+- [Template - Concept.md](00-Start/Templates/Template%20-%20Concept.md)
+- [Template - Reference.md](00-Start/Templates/Template%20-%20Reference.md)
+- [Template - Troubleshooting.md](00-Start/Templates/Template%20-%20Troubleshooting.md)
+- [Template - Runbook.md](00-Start/Templates/Template%20-%20Runbook.md)
+- [Template - Release Notes.md](00-Start/Templates/Template%20-%20Release%20Notes.md)
+- [Template - ADR.md](00-Start/Templates/Template%20-%20ADR.md)
+- [Template - Tutorial.md](00-Start/Templates/Template%20-%20Tutorial.md)
 
 ### 1.3 Customize Templates for Your Domain
 
-Copy these 8 templates from [[UDA - Template]] Section 4. Customize section headings but keep the structure.
+Copy these 8 templates from [UDA - Template](UDA%20-%20Template/UDA%20-%20Template.md) Section 4. Customize section headings but keep the structure.
 
 **Example customizations:**
 
@@ -398,7 +398,7 @@ Add domain-specific metadata:
 
 ### 4.5 Cross-Link Using Routing Rules
 
-Link pages according to [[DOCUMENTATION_DOCTRINE#2. Strict Routing Discipline (Diataxis)]]:
+ Link pages according to [DOCUMENTATION_DOCTRINE - Section 2](UDA%20-%20Template/DOCUMENTATION_DOCTRINE.md#2.-strict-routing-discipline-(diataxis)):
 
 **Task pages** link to:
 - Reference (for exact syntax)

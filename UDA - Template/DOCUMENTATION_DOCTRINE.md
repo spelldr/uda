@@ -70,9 +70,9 @@ This is not guidance. These are hard constraints. Violating them causes the syst
 
 | Bad | Good |
 |---|---|
-| "How to configure authentication (and here's what authentication is...)" | Split into two pages: [[Task: Configure authentication]] and [[Concept: Authentication]] |
-| "The Deployment API (which is used to deploy pods)" | [[Reference: Deployment API]] links to [[Task: Deploy an application]], which links to [[Concept: Deployments]] |
-| "Troubleshooting Pod failures (here's how Pod scheduling works)" | [[Troubleshooting: Pod won't start]] links to [[Concept: Pod scheduling]] |
+| "How to configure authentication (and here's what authentication is...)" | Split into two pages: [Task: Configure authentication](20-Tasks/Task%20-%20Configure%20authentication.md) and [Concept: Authentication](30-Concepts/Concept%20-%20Authentication.md) |
+| "The Deployment API (which is used to deploy pods)" | [Reference: Deployment API](40-Reference/Reference%20-%20Deployment%20API.md) links to [Task: Deploy an application](20-Tasks/Task%20-%20Deploy%20an%20application.md), which links to [Concept: Deployments](30-Concepts/Concept%20-%20Deployments.md) |
+| "Troubleshooting Pod failures (here's how Pod scheduling works)" | [Troubleshooting: Pod won't start](50-Troubleshooting/Troubleshooting%20-%20Pod%20Won%27t%20Start.md) links to [Concept: Pod scheduling](30-Concepts/Concept%20-%20Pod%20scheduling.md) |
 
 **Why:** Mixing modes overloads cognitive load. Users come for one thing; don't give them three.
 
@@ -91,9 +91,9 @@ This is not guidance. These are hard constraints. Violating them causes the syst
 **Why:** Historical narratives add cognitive load without helping the user accomplish their goal right now.
 
 **How to fix:** 
-- History → [[ADR: Why we chose X]]
-- Evolution → [[Release Notes: v2.0 breaking changes]]
-- Context → [[Concept: Background theory]]
+- History → [ADR: Why we chose X](90-ADRs/ADR%20-%20Why%20we%20chose%20X.md)
+- Evolution → [Release Notes: v2.0 breaking changes](80-ReleaseUpgrade/Release%20Notes%20-%20v2.0%20breaking%20changes.md)
+- Context → [Concept: Background theory](30-Concepts/Concept%20-%20Background%20theory.md)
 
 ---
 
@@ -240,7 +240,7 @@ review_cadence: [frequency, e.g., "monthly", "after release"]
 
 **Required:**
 - Clear, unambiguous titles (search-friendly)
-- No unexplained jargon (link to [[Glossary]] term or [[Concept]])
+- No unexplained jargon (link to [Glossary](99-Glossary/Glossary.md) term or [Concept](30-Concepts/Concept.md))
 - No images as the only explanation (images + text)
 - Code examples properly formatted (syntax highlighting)
 
