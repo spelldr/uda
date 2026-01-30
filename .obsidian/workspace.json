@@ -1,0 +1,227 @@
+{
+  "main": {
+    "id": "28925aafdfddab99",
+    "type": "split",
+    "children": [
+      {
+        "id": "15ed76cfba3d3746",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "88cfa9ee6c0e78c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/ROUTING.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "ROUTING"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2d7bb4f835cf9dd2",
+    "type": "split",
+    "children": [
+      {
+        "id": "720a208ad6e0500b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "35d2d04a3ba9ded3",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "943f7bf11a53b243",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "03b48f1d66d8a612",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 206.50329208374023
+  },
+  "right": {
+    "id": "f93e14b826ac47a2",
+    "type": "split",
+    "children": [
+      {
+        "id": "693d52fc1c4d812b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "276796cd606aaf5d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README"
+            }
+          },
+          {
+            "id": "a247172c5ffe5827",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from README"
+            }
+          },
+          {
+            "id": "299db4ddfcb3dea3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "95a47c634cb22905",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "228551a4ad22c80c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "zk-prefixer:Create new unique note": false,
+      "workspaces:Manage workspace layouts": false
+    }
+  },
+  "active": "88cfa9ee6c0e78c7",
+  "lastOpenFiles": [
+    "docs/GOVERNANCE.md",
+    "docs/ROUTING.md",
+    "README.md",
+    "examples/concept-example-annotated.md",
+    "examples/reference-example-annotated.md",
+    "templates/reference.template.md",
+    "templates/concept.template.md",
+    "templates/task.template.md",
+    "UDA Foundations and Scientific Basis.md",
+    "docs/CONTRIBUTOR_ONBOARDING.md",
+    "schemas/validate.js",
+    "schemas/uda-content.schema.json",
+    "examples/troubleshooting-example-annotated.md",
+    "examples/task-example-annotated.md",
+    "templates/troubleshooting.template.md",
+    "docs/VALIDATION.md",
+    "schemas",
+    "examples",
+    "templates",
+    "docs",
+    "routing.template.md",
+    "troubleshooting.template.md",
+    "reference.template.md",
+    "concept.template.md",
+    "task-template.md",
+    "uda-content.schema.json",
+    "meta/TEMPLATE-GUIDE.md",
+    "docs/templates/concept-template.md",
+    "archive/README.md",
+    "archive/GOVERNANCE.md",
+    "docs/templates/reference-template.md",
+    "docs/templates/tasks-template.md",
+    "docs/templates",
+    "meta/STYLE.md",
+    "LICENSE",
+    "starter-kit"
+  ]
+}

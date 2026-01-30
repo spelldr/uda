@@ -1,0 +1,14 @@
+{
+  "defaultViewMode": "preview",
+  "livePreview": false,
+  "readableLineLength": false,
+  "propertiesInDocument": "visible",
+  "showLineNumber": true,
+  "spellcheck": false,
+  "openBehavior": "file:README",
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./attachments",
+  "useMarkdownLinks": true,
+  "showUnsupportedFiles": true,
+  "alwaysUpdateLinks": true
+}
