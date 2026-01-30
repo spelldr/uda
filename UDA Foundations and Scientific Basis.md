@@ -8,11 +8,11 @@ UDA is a doctrine‑driven documentation system engineered to minimize cognitive
 
 # 1. Cognitive Load Theory (CLT)
 
-### Why it matters
+## Why it matters
 
 Documentation fails when it overloads working memory. CLT provides the constraints that shape UDA’s structure.
 
-### UDA’s application of CLT
+## UDA’s application of CLT
 
 - **Intrinsic load** is isolated by separating Tasks, Concepts, References, and Troubleshooting.
 - **Extraneous load** is minimized through:
@@ -28,11 +28,11 @@ UDA’s architecture is intentionally designed to reduce decision‑making overh
 
 # 2. Information Foraging Theory (Pirolli & Card)
 
-### Why it matters
+## Why it matters
 
 Users follow “information scent” — cues that help them predict where the answer is.
 
-### UDA’s application
+## UDA’s application
 
 - Predictable folder names → strong scent
 - Shallow hierarchy → low navigation cost
@@ -45,11 +45,11 @@ UDA optimizes for high scent strength and low foraging cost.
 
 # 3. Schema Theory (Rumelhart, Anderson)
 
-### Why it matters
+## Why it matters
 
 People learn and retrieve information by activating schemas. Mixed‑intent documents destroy retrieval efficiency.
 
-### UDA’s application
+## UDA’s application
 
 - **Concepts** build schemas
 - **Tasks** operationalize schemas
@@ -62,11 +62,11 @@ Each doc type aligns with a distinct cognitive function.
 
 # 4. Minimalism in Technical Communication (Carroll)
 
-### Why it matters
+## Why it matters
 
 Minimalism reduces unnecessary cognitive steps and improves error recovery.
 
-### UDA’s application
+## UDA’s application
 
 - Tasks contain only steps and prerequisites
 - Concepts never pollute procedures
@@ -79,11 +79,11 @@ UDA applies minimalism as a structural rule, not a stylistic preference.
 
 # 5. Findability & Information Architecture Research
 
-### Why it matters
+## Why it matters
 
 IA research shows users succeed when navigation is shallow, categories are mutually exclusive, and labels are predictable.
 
-### UDA’s application
+## UDA’s application
 
 - 7–11 top‑level sections (Miller’s Law)
 - Predictable depth
@@ -97,11 +97,11 @@ UDA enforces a stable, predictable IA that scales without entropy.
 
 # 6. Knowledge Management & Organizational Memory Research
 
-### Why it matters
+## Why it matters
 
 Knowledgebases decay when structure drifts, categories multiply, and contributors improvise.
 
-### UDA’s application
+## UDA’s application
 
 - Doctrine prevents entropy
 - Templates enforce consistency
@@ -130,31 +130,31 @@ These four types form the backbone of UDA.
 
 Documentation systems fail in predictable ways. UDA’s doctrine is designed to eliminate these failure modes:
 
-### 8.1 Mixed‑intent documents
+## 8.1 Mixed‑intent documents
 
 Tasks with conceptual digressions, references with troubleshooting notes, etc.
 
-### 8.2 Folder sprawl
+## 8.2 Folder sprawl
 
 Contributors inventing new categories, creating parallel structures, or nesting too deeply.
 
-### 8.3 Conceptual drift
+## 8.3 Conceptual drift
 
 Definitions, models, and explanations spreading across multiple files.
 
-### 8.4 Improvised contributor behavior
+## 8.4 Improvised contributor behavior
 
 People “just putting things where they feel right,” leading to entropy.
 
-### 8.5 Overloaded “misc” categories
+## 8.5 Overloaded “misc” categories
 
 Catch‑all folders that destroy information scent.
 
-### 8.6 Troubleshooting buried inside tasks
+## 8.6 Troubleshooting buried inside tasks
 
 Users cannot find error recovery paths when they need them most.
 
-### 8.7 Procedural docs contaminated with narrative
+## 8.7 Procedural docs contaminated with narrative
 
 Steps become harder to follow and harder to maintain.
 
@@ -166,11 +166,11 @@ UDA’s structure is explicitly designed to prevent these systemic failures.
 
 UDA is not self‑policing — it requires explicit enforcement mechanisms.
 
-### 9.1 Routing rules
+## 9.1 Routing rules
 
 Every new piece of content must be routed to one of the four doc types. No exceptions.
 
-### 9.2 Contribution rules
+## 9.2 Contribution rules
 
 Contributors must:
 
@@ -179,7 +179,7 @@ Contributors must:
 - avoid inventing new categories
 - avoid mixing intents
 
-### 9.3 Review rules
+## 9.3 Review rules
 
 Reviewers check:
 
@@ -188,14 +188,14 @@ Reviewers check:
 - template adherence
 - category boundaries
 
-### 9.4 Anti‑entropy mechanisms
+## 9.4 Anti‑entropy mechanisms
 
 - No “misc” folders
 - No ad‑hoc subcategories
 - No hybrid documents
 - No conceptual duplication
 
-### 9.5 Governance files
+## 9.5 Governance files
 
 Doctrine is codified in:
 
@@ -212,7 +212,7 @@ These files define the system’s laws.
 
 A complete documentation system needs a lifecycle. UDA’s lifecycle is simple and predictable.
 
-### 10.1 Ingestion
+## 10.1 Ingestion
 
 New content enters through:
 
@@ -220,16 +220,16 @@ New content enters through:
 - contributor requests
 - event‑driven updates
 
-### 10.2 Classification
+## 10.2 Classification
 
 Content is assigned to one of the four doc types.  
 If it doesn’t fit, it doesn’t enter the system.
 
-### 10.3 Placement
+## 10.3 Placement
 
 Content is routed to the correct folder using doctrine.
 
-### 10.4 Maintenance
+## 10.4 Maintenance
 
 Content is updated when:
 
@@ -237,7 +237,7 @@ Content is updated when:
 - troubleshooting patterns emerge
 - conceptual models evolve
 
-### 10.5 Retirement
+## 10.5 Retirement
 
 Content is archived when:
 
@@ -245,7 +245,7 @@ Content is archived when:
 - it is replaced by a newer model
 - the system it describes is removed
 
-### 10.6 Contributor onboarding
+## 10.6 Contributor onboarding
 
 New contributors learn:
 

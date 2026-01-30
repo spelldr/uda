@@ -6,7 +6,7 @@
     "validate:schema": "node schemas/validate.js",
     "validate:frontmatter": "node scripts/validate-frontmatter.js",
     "validate:filenames": "node scripts/validate-filenames.js",
-    "lint:markdown": "markdownlint . --config .markdownlint.yml --ignore node_modules --ignore .git"
+    "lint:markdown": "markdownlint . --config .markdownlint.yml --ignore node_modules --ignore .git --ignore Untitled.md"
   },
   "keywords": [
     "documentation",
@@ -21,7 +21,7 @@
     "ajv": "^8.12.0",
     "glob": "^10.3.10",
     "js-yaml": "^4.1.0",
-    "markdownlint-cli": "^0.34.0"
+    "markdownlint-cli": "^0.47.0"
   },
   "engines": {
     "node": ">=18.0.0"

@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/VALIDATION.md",
+                "file": "README.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "VALIDATION"
+              "title": "README"
+            }
+          },
+          {
+            "id": "7bdfac6abc0f754b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -78,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 308.50328826904297
+    "width": 308.50328826904297,
+    "collapsed": true
   },
   "right": {
     "id": "f93e14b826ac47a2",
@@ -185,43 +201,43 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "88cfa9ee6c0e78c7",
+  "active": "7bdfac6abc0f754b",
   "lastOpenFiles": [
-    "README.md",
-    "docs/VALIDATION.md",
-    "node_modules/js-yaml/README.md",
-    "node_modules/js-yaml/lib/type/timestamp.js",
-    "node_modules/js-yaml/lib/type/str.js",
-    "node_modules/js-yaml/lib/type/set.js",
-    "node_modules/js-yaml/lib/type/seq.js",
-    "node_modules/js-yaml/lib/type/pairs.js",
-    "node_modules/js-yaml/lib/type/omap.js",
-    "node_modules/js-yaml/lib/type/null.js",
-    "node_modules/js-yaml/lib/type/merge.js",
-    "node_modules/js-yaml/lib/type/map.js",
-    "node_modules/js-yaml/lib/type/int.js",
-    "node_modules/minipass/README.md",
-    "node_modules/package-json-from-dist/LICENSE.md",
-    "node_modules/commander/Readme.md",
-    "node_modules/ajv/README.md",
-    "node_modules/minimist/README.md",
-    "node_modules/minimist/CHANGELOG.md",
-    "node_modules/json-schema-traverse/README.md",
-    "node_modules/string-width-cjs/node_modules/emoji-regex/README.md",
-    "node_modules/wrap-ansi/readme.md",
-    "node_modules/entities/readme.md",
-    "node_modules/strip-ansi/readme.md",
-    "node_modules/get-stdin/readme.md",
-    "node_modules/markdownlint-micromark/README.md",
-    "node_modules/strip-ansi-cjs/node_modules/ansi-regex/readme.md",
-    "node_modules/strip-ansi-cjs/readme.md",
-    "node_modules/ignore/README.md",
-    "node_modules/run-con/README.md",
-    "node_modules/markdown-it/README.md",
-    "node_modules/mdurl/README.md",
-    "node_modules/mdurl/CHANGELOG.md",
-    "node_modules/brace-expansion/README.md",
-    "node_modules/uc.micro/README.md",
-    "node_modules/uc.micro/CHANGELOG.md"
+    "UDA Foundations and Scientific Basis.md",
+    "node_modules/markdownlint/lib/md060.mjs",
+    "node_modules/markdownlint/lib/md059.mjs",
+    "node_modules/markdownlint/lib/md058.mjs",
+    "node_modules/markdownlint/lib/md056.mjs",
+    "node_modules/markdownlint/lib/md055.mjs",
+    "node_modules/markdownlint/lib/md054.mjs",
+    "node_modules/markdownlint/lib/md046.mjs",
+    "node_modules/markdownlint/lib/md025.mjs",
+    "node_modules/markdownlint/lib/md024.mjs",
+    "node_modules/markdownlint/lib/md014.mjs",
+    "node_modules/micromark-factory-title/readme.md",
+    "node_modules/micromark-util-classify-character/readme.md",
+    "node_modules/micromark-util-html-tag-name/readme.md",
+    "node_modules/micromark-extension-directive/readme.md",
+    "node_modules/micromark-extension-gfm-autolink-literal/readme.md",
+    "node_modules/micromark/readme.md",
+    "node_modules/micromark-extension-gfm-footnote/readme.md",
+    "node_modules/micromark-core-commonmark/readme.md",
+    "node_modules/micromark-factory-space/readme.md",
+    "node_modules/micromark-util-types/readme.md",
+    "node_modules/tinyglobby/README.md",
+    "node_modules/micromark-util-symbol/readme.md",
+    "node_modules/micromark-util-decode-numeric-character-reference/readme.md",
+    "node_modules/decode-named-character-reference/readme.md",
+    "node_modules/micromark-extension-math/readme.md",
+    "node_modules/micromark-extension-gfm-table/readme.md",
+    "node_modules/micromark-util-encode/readme.md",
+    "node_modules/debug/README.md",
+    "node_modules/devlop/readme.md",
+    "node_modules/micromark-util-normalize-identifier/readme.md",
+    "node_modules/micromark-util-character/readme.md",
+    "node_modules/micromark-util-combine-extensions/readme.md",
+    "node_modules/micromark-util-chunked/readme.md",
+    "node_modules/micromark-util-subtokenize/readme.md",
+    "node_modules/micromark-util-resolve-all/readme.md"
   ]
 }

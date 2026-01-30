@@ -63,6 +63,12 @@ Go to `templates/` folder:
 
 Copy, rename, and fill in.
 
+**If you use Obsidian:**
+1. Open this repo as a vault.
+2. Settings → Templates → set template folder to `templates`.
+3. Create a new file, then insert a template via Command Palette → "Templates: Insert template".
+4. Convert any wikilinks (`[[file]]`) to standard markdown links before committing.
+
 ### 3. Fill Frontmatter
 
 ```yaml
