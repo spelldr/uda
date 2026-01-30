@@ -1,99 +1,352 @@
 # Unified Documentation Architecture (UDA)
 
-A simple framework for building documentation using three content types and strict routing rules.
+A scientifically-grounded documentation system designed to minimize cognitive load, maximize findability, and enforce contributor discipline at scale.
 
-## Quick Start
+**This is a template repository.** It contains the UDA framework, templates, governance rules, and examples. Use this to bootstrap documentation for your team or project.
 
-1. **Copy `starter-kit/` to your project**
-2. **Read the routing matrix** (5 minutes)
-3. **Use the templates** for your content
-4. **Add metadata** to each page (YAML frontmatter)
+---
 
-Done. That's it.
+## What Is UDA?
 
-## The Three Content Types
+UDA solves a core documentation problem: **mixed-intent documents are harder to search, read, and maintain**.
 
-| Type | For | Example |
+Instead, UDA enforces four mutually exclusive document types:
+
+| Type | Purpose | You Use It When... |
 |---|---|---|
-| **Task** | Step-by-step instructions | "How to deploy an application" |
-| **Concept** | Explanatory information | "What is a Deployment?" |
-| **Reference** | Structured lookup | "Deployment API fields" |
+| **Task** | Procedural execution | "How do I do X?" |
+| **Concept** | Mental models & understanding | "What/why is X?" |
+| **Reference** | Lookup factual data | "Look up X's definition" |
+| **Troubleshooting** | Error recovery | "I'm stuck with error X" |
 
-## The Routing Rule
+Each type has:
+- A **template** (starter structure)
+- A **JSON Schema** (enforced metadata)
+- **Governance rules** (routing discipline)
+- **Examples** (annotated samples)
 
-- **"How do I...?"** → Task
-- **"What is...?"** → Concept  
-- **"What are the exact fields?"** → Reference
+**Result:** Readers find exactly what they need. Contributors follow predictable patterns. Docs scale without entropy.
 
-That's the whole system. One intent per page. No mixing.
+---
 
-## Every Page Needs This
+## Core Philosophy
+
+UDA is grounded in cognitive science:
+
+1. **Cognitive Load Theory (CLT)** — Separate doc types reduce working memory load
+2. **Information Foraging Theory** — Predictable structure creates "information scent"
+3. **Schema Theory** — Different document types activate different mental models
+4. **Minimalism** — Keep docs focused; link instead of embedding
+
+**Read [UDA Foundations and Scientific Basis.md](./UDA%20Foundations%20and%20Scientific%20Basis.md)** for the full theory.
+
+---
+
+## Quick Start for Contributors
+
+### 1. Identify Your Doc Type
+
+Use the **[ROUTING.md](./governance/ROUTING.md)** decision tree (3 questions, < 2 min):
+
+- Is this about *how to do something*? → **Task**
+- Is this about *explaining why/what*? → **Concept**
+- Is the user *stuck with an error*? → **Troubleshooting**
+- Otherwise → **Reference**
+
+### 2. Pick Your Template
+
+Go to `templates/` folder:
+- `task.template.md`
+- `concept.template.md`
+- `reference.template.md`
+- `troubleshooting.template.md`
+
+Copy, rename, and fill in. Then place the file in `docs/<type>/` (e.g., `docs/task/`).
+
+**If you use Obsidian:**
+1. Open this repo as a vault.
+2. Settings → Templates → set template folder to `templates`.
+3. Create a new file, then insert a template via Command Palette → "Templates: Insert template".
+4. Convert any wikilinks (`[[file]]`) to standard markdown links before committing.
+
+### 3. Fill Frontmatter
 
 ```yaml
 ---
-title: Your title
-description: One sentence summary
-tags: ["tag1", "tag2"]
-owner: @your-github-handle
-status: current
-last_verified: 2026-01-19
-review_cycle: quarterly
-type: task
+type: "task"              # Match your doc type
+title: "Deploy a Service" # Specific, searchable
+version: "1.0.0"          # Repo semantic version
+tags: ["deployment", "guide"]  # Topic + intent
 ---
 ```
 
-See `starter-kit/governance/metadata-schema.yaml` for details.
+### 4. Self-Review
 
-## Folder Structure
+Check [VALIDATION.md](./governance/VALIDATION.md) before submitting (routing, metadata, structure).
+
+### 5. Submit PR
+
+Automated checks validate schema + lint. Steward reviews for routing discipline.
+
+**Full onboarding guide:** [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md) (30 min read)
+
+---
+
+## Directory Structure
 
 ```
-docs/
-  20-Tasks/
-    Task - [action].md
-  30-Concepts/
-    Concept - [topic].md
-  40-Reference/
-    Reference - [api].md
+.
+├── docs/                              # Content by type
+│   ├── task/                          # Task docs (procedures)
+│   │   └── README.md
+│   ├── concept/                       # Concept docs (mental models)
+│   │   └── README.md
+│   ├── reference/                     # Reference docs (lookup data)
+│   │   └── README.md
+│   └── troubleshooting/               # Troubleshooting docs (error recovery)
+│       └── README.md
+│
+├── governance/                        # Governance & onboarding
+│   ├── ROUTING.md                     # Decision tree for doc types
+│   ├── GOVERNANCE.md                  # Authority, rules, lifecycle
+│   ├── VALIDATION.md                  # Reviewer checklist
+│   └── CONTRIBUTOR_ONBOARDING.md      # Full learning path
+│
+├── templates/                         # Starter kits
+│   ├── task.template.md
+│   ├── concept.template.md
+│   ├── reference.template.md
+│   └── troubleshooting.template.md
+│
+├── examples/                          # Annotated samples
+│   ├── task-example-annotated.md
+│   ├── concept-example-annotated.md
+│   ├── reference-example-annotated.md
+│   └── troubleshooting-example-annotated.md
+│
+├── schemas/                           # Validation
+│   ├── uda-content.schema.json        # JSON Schema
+│   └── validate.js                    # Validator script
+│
+├── .github/workflows/                 # CI/CD
+│   ├── validate-uda.yml               # Schema + lint validation
+│   └── uda-ci.yml                     # Additional checks
+│
+├── .markdownlint.yml                  # Markdown linting config
+├── .editorconfig                      # Editor formatting
+├── uda-content.schema.json            # (Legacy; moved to schemas/)
+└── README.md                          # This file
 ```
 
-## Templates
+---
 
-Copy from `starter-kit/templates/`:
+## Key Documents
 
-- `Template - Task.md` — Use this for procedures
-- `Template - Concept.md` — Use this for explanations
-- `Template - Reference.md` — Use this for API/fields
+### For Learning
 
-## CI/CD Quality Checks
+- **[CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)** — Start here if you're new
+  - Explains the philosophy
+  - Walks through routing, templates, submission
+  - FAQ section
+  
+- **[UDA Foundations and Scientific Basis.md](./UDA%20Foundations%20and%20Scientific%20Basis.md)** — Deep dive
+  - Cognitive science foundations
+  - Why this design works
+  - Academic references
 
-Copy `.github/workflows/quality.yml` to your project.
+### For Contributor Decisions
 
-Automatically validates:
-- Markdown formatting
-- Spell checking
-- Metadata required fields
-- Links work
-- No `draft` pages in releases
+- **[ROUTING.md](./governance/ROUTING.md)** — "What type of doc should I write?"
+  - Decision tree with examples
+  - Edge case clarifications
+  - Anti-patterns to avoid
 
-## Contributing
+- **[VALIDATION.md](./governance/VALIDATION.md)** — "Is my doc ready to submit?"
+  - Pre-merge checklist
+  - Red flags vs. yellow flags
+  - Common rejection reasons
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+### For Governance
+
+- **[GOVERNANCE.md](./governance/GOVERNANCE.md)** — "Who decides? What are the rules?"
+  - Steward role and authority
+  - Lifecycle (ingestion → maintenance → retirement)
+  - Enforcement mechanisms (automated + manual)
+  - Conflict resolution
+
+---
+
+## Workflow
+
+### As a Contributor
+
+1. **Read:** [ROUTING.md](./governance/ROUTING.md) (classify your doc)
+2. **Copy:** Template matching your doc type into `docs/<type>/`
+3. **Write:** Fill in sections (follow template guidance)
+4. **Review:** Check [VALIDATION.md](./governance/VALIDATION.md) checklist
+5. **Submit:** Create PR; automated checks run
+6. **Iterate:** Respond to Steward feedback
+7. **Merge:** After approval
+
+### As a Steward (Reviewer)
+
+1. **Automated checks pass?** (CI/CD validates schema + lint)
+2. **Routing correct?** (Use ROUTING.md as arbiter)
+3. **Single intent?** (No mixed-purpose docs)
+4. **Metadata complete?** (type, title, version, tags, body structure)
+5. **Cross-links valid?** (Point to real docs)
+6. **Approve or request changes** (explain using ROUTING.md / VALIDATION.md)
+
+---
+
+## Examples
+
+This repo includes **annotated examples** for each doc type:
+
+| File | Purpose | Learn About |
+|---|---|---|
+| [task-example-annotated.md](./examples/task-example-annotated.md) | Setting up a database connection | Prerequisites, steps, verification |
+| [concept-example-annotated.md](./examples/concept-example-annotated.md) | API authentication models | Mental models, trade-offs, relationships |
+| [reference-example-annotated.md](./examples/reference-example-annotated.md) | HTTP status codes | Lookup tables, fast retrieval |
+| [troubleshooting-example-annotated.md](./examples/troubleshooting-example-annotated.md) | Database connection errors | Symptoms, causes, resolutions |
+
+Each example includes **annotations explaining why the structure works**.
+
+---
+
+## Technology
+
+### Schema Validation
+
+**JSON Schema** defines all doc types. See [schemas/uda-content.schema.json](./schemas/uda-content.schema.json).
+
+Enforces:
+- Required fields (type, title, version, body)
+- Valid doc types (task | concept | reference | troubleshooting)
+- Type-specific body structure
+- Semantic versioning format
+
+### Validator Script
+
+**[schemas/validate.js](./schemas/validate.js)** — Validate docs locally before pushing.
+
+**Setup:**
+```bash
+# Install dependencies (one-time setup)
+npm install
+
+# Validate a single file
+node schemas/validate.js examples/task-example-annotated.md
+
+# Output: ✅ Validation passed, or ❌ with error details
+```
+
+**In CI/CD**, the validator runs automatically on every PR via GitHub Actions. See `.github/workflows/validate-uda.yml`.
+
+### CI/CD Workflows
+
+**GitHub Actions** runs on every PR:
+
+- **`validate-uda.yml`** — Schema + lint validation (blocks merge if failed)
+- **`uda-ci.yml`** — Governance checks (alerts if governance docs change)
+
+---
+
+## Getting Started with UDA
+
+### Option A: Use as a Template
+
+1. **Fork or clone this repo**
+2. **Replace examples** with your own content (keep templates and governance)
+3. **Customize** governance rules in [GOVERNANCE.md](./governance/GOVERNANCE.md) if needed (e.g., change "Steward" role name)
+4. **Invite team** to read [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
+
+### Option B: Adopt UDA for Existing Docs
+
+1. **Read** [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md) + [ROUTING.md](./governance/ROUTING.md)
+2. **Classify existing docs** using the routing decision tree (which ones are Task? Concept? etc.)
+3. **Refactor:** Split mixed-intent docs into separate Task + Concept + Reference files
+4. **Add frontmatter** to each doc (type, title, version, tags, body)
+5. **Validate** using [schemas/validate.js](./schemas/validate.js)
+6. **Set up CI/CD** workflows from `.github/workflows/`
+
+---
 
 ## Governance
 
-See [GOVERNANCE.md](GOVERNANCE.md) for roles and decisions.
+### The Steward Role
 
-## Learn More
+One person (or rotating) maintains UDA discipline:
 
-- **Routing discipline:** [starter-kit/governance/routing-matrix.md](starter-kit/governance/routing-matrix.md)
-- **Metadata requirements:** [starter-kit/governance/metadata-schema.yaml](starter-kit/governance/metadata-schema.yaml)
-- **Full doctrine:** [UDA - Template/DOCUMENTATION_DOCTRINE.md](UDA%20-%20Template/DOCUMENTATION_DOCTRINE.md)
+- **Approves** new PRs for routing correctness
+- **Rejects** mixed-intent docs (requests split)
+- **Maintains** templates and governance docs
+- **Handles** edge cases and conflicts
+
+**See [GOVERNANCE.md](./governance/GOVERNANCE.md) for full details.**
+
+### Contributing Changes to UDA Itself
+
+If you want to change templates, routing rules, or governance:
+
+1. **Open an issue** or discussion (not a direct PR)
+2. **Propose change** with rationale
+3. **Team consensus** required
+4. **Update version** in repo (MAJOR/MINOR/PATCH)
+5. **Merge** and document in CHANGELOG.md
 
 ---
 
-**Use UDA because:**
-- ✅ Clear structure (no more "where does this go?")
-- ✅ Mandatory metadata (ownership, freshness)
-- ✅ Automated validation (catches problems early)
-- ✅ Easy for users (one content type per question)
-- ✅ Scales (same rules work for 10 pages or 1000)
+## FAQ
+
+**Q: Can I have a Task that also explains the concept?**
+
+A: No. Split into two docs: Task (how-to) + Concept (why/what). Link them together. This improves findability and reduces cognitive load.
+
+**Q: What if my doc doesn't fit one type perfectly?**
+
+A: Use the ROUTING.md decision tree. Pick the *primary* purpose. Other purposes get separate docs.
+
+**Q: Can I invent a new folder structure?**
+
+A: No. Folders organize by **doc type** under `docs/` (task, concept, reference, troubleshooting). Use tags to capture topic or domain.
+
+**Q: What if I disagree with the routing decision?**
+
+A: Discuss with Steward using ROUTING.md. If still ambiguous, the decision is: "What would 80% of readers search for?" That's your primary intent.
+
+**Q: Do I have to use semantic versioning?**
+
+A: Yes. All docs share the repo version (not individual versions). See [GOVERNANCE.md](./governance/GOVERNANCE.md) for versioning rules.
+
+---
+
+## Contributing
+
+This is a **template repository** for UDA itself. To contribute to the UDA framework:
+
+1. **Read:** [governance/GOVERNANCE.md](./governance/GOVERNANCE.md)
+2. **Propose:** Open an issue with your suggestion
+3. **Discuss:** Team consensus required for framework changes
+4. **Implement:** Update docs, examples, schema, governance as needed
+5. **Version:** Bump semantic version
+
+To use UDA for your own documentation, see **"Getting Started with UDA"** above.
+
+---
+
+## License
+
+This UDA framework is provided as-is for documentation teams. Adapt it to your needs.
+
+---
+
+## Questions?
+
+- **Beginner?** Start with [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
+- **Stuck on routing?** See [ROUTING.md](./governance/ROUTING.md) decision tree
+- **Reviewing a doc?** Use [VALIDATION.md](./governance/VALIDATION.md) checklist
+- **Understanding the theory?** Read [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md)
+- **Setting governance?** See [GOVERNANCE.md](./governance/GOVERNANCE.md)
+
+Welcome to UDA! 🚀

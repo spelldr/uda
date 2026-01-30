@@ -1,0 +1,45 @@
+name: UDA CI/CD
+
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'templates/**'
+      - 'examples/**'
+      - 'schemas/**'
+      - 'CONTRIBUTING.md'
+      - 'GOVERNANCE.md'
+
+jobs:
+  test-validator:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run validator tests
+        run: npm run test:validator
+
+  governance-review:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '⚠️ This PR modifies UDA governance or routing rules. Ensure team consensus before merging.\n\nDocuments modified:\n- GOVERNANCE.md or ROUTING.md (affects all contributors)\n\nRecommend: Request review from @steward or team lead.'
+            })

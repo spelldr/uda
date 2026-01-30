@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Unified Documentation Architecture – Content Schema",
+  "description": "Schema governing all UDA content files. Enforces doc-type intent, structure, and boundaries.",
+  "type": "object",
+  "required": [
+    "type",
+    "title",
+    "version"
+  ],
+  "properties": {
+    "type": {
+      "description": "The UDA doc type. Determines allowed structure.",
+      "type": "string",
+      "enum": ["task", "concept", "reference", "troubleshooting"]
+    },
+
+    "title": {
+      "description": "Human-readable title of the document.",
+      "type": "string",
+      "minLength": 1
+    },
+
+    "version": {
+      "description": "Semantic version of this content file.",
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+
+    "tags": {
+      "description": "Optional classification tags.",
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+
+    "body": {
+      "description": "The structured content of the document. Shape depends on doc type.",
+      "type": "object",
+      "oneOf": [
+        {
+          "title": "Task Document",
+          "properties": {
+            "prerequisites": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "steps": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" },
+                  "note": { "type": "string" }
+                }
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["steps"]
+        },
+
+        {
+          "title": "Concept Document",
+          "properties": {
+            "summary": { "type": "string" },
+            "sections": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["heading", "content"],
+                "properties": {
+                  "heading": { "type": "string" },
+                  "content": { "type": "string" }
+                }
+              }
+            }
+          },
+          "required": ["summary"]
+        },
+
+        {
+          "title": "Reference Document",
+          "properties": {
+            "entries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["key", "value"],
+                "properties": {
+                  "key": { "type": "string" },
+                  "value": { "type": "string" },
+                  "note": { "type": "string" }
+                }
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["entries"]
+        },
+
+        {
+          "title": "Troubleshooting Document",
+          "properties": {
+            "symptoms": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 1
+            },
+            "causes": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "resolutions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": { "type": "string" },
+                  "note": { "type": "string" }
+                }
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["symptoms", "resolutions"]
+        }
+      ]
+    }
+  }
+}

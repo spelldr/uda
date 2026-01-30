@@ -25,7 +25,6 @@ dist/
 build/
 
 # Markdown processors
-.obsidian/
 .logseq/
 
 # PDF exports (keep markdown source)
