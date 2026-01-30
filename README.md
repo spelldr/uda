@@ -215,8 +215,9 @@ Enforces:
 
 **[schemas/validate.js](./schemas/validate.js)** — Validate docs locally before pushing.
 
+**Setup:**
 ```bash
-# Install dependencies (if not done)
+# Install dependencies (one-time setup)
 npm install
 
 # Validate a single file
@@ -224,6 +225,8 @@ node schemas/validate.js examples/task-example-annotated.md
 
 # Output: ✅ Validation passed, or ❌ with error details
 ```
+
+**In CI/CD**, the validator runs automatically on every PR via GitHub Actions. See `.github/workflows/validate-uda.yml`.
 
 ### CI/CD Workflows
 

@@ -163,7 +163,7 @@ body:
 ### Step 5: Add Cross-Links
 
 At the end of your doc (before submission), mention related docs:
-
+**Note:** These are example paths. Your actual folder structure may differ. Use relative paths matching your domain organization.
 **For a Task doc:**
 ```
 ## Related Documents

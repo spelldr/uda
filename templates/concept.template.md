@@ -1,6 +1,6 @@
 ---
 type: "concept"
-title: ""
+title: "[Title: What concept does this explain?]"
 version: "1.0.0"
 tags: []
 ---

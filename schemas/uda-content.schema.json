@@ -3,7 +3,11 @@
   "title": "Unified Documentation Architecture – Content Schema",
   "description": "Schema governing all UDA content files. Enforces doc-type intent, structure, and boundaries.",
   "type": "object",
-  "required": ["type", "title", "version", "body"],
+  "required": [
+    "type",
+    "title",
+    "version"
+  ],
   "properties": {
     "type": {
       "description": "The UDA doc type. Determines allowed structure.",

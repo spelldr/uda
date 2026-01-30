@@ -8,9 +8,41 @@ Use this checklist when reviewing PRs that add or update UDA content.
 
 - [ ] JSON Schema validation passed (all required fields, correct types)
 - [ ] Markdown lint passed (heading levels, list consistency, no line-length issues)
+- [ ] Frontmatter validation passed (required fields: type, title, version)
 - [ ] Filename validation passed (lowercase, hyphens, meaningful)
 
 **If any automated check fails:** Request author fix before proceeding to manual review.
+
+#### How to Trigger Automated Validation
+
+**Locally (before pushing):**
+
+```bash
+# Install dependencies (one-time setup)
+npm install
+
+# Run all validators
+npm run validate:schema          # Schema compliance check
+npm run validate:frontmatter     # Frontmatter fields check
+npm run validate:filenames       # Filename convention check
+npm run lint:markdown            # Markdown style check
+```
+
+**Automatically on PR:**
+
+When you push a PR to GitHub, the `.github/workflows/validate-uda.yml` workflow automatically runs:
+1. All 4 checks above
+2. Results posted as GitHub Check on PR
+3. PR cannot merge if any check fails
+
+**For Reviewers:**
+
+If you see ❌ validation failures on a PR:
+1. Check the GitHub Actions tab for detailed error messages
+2. Link author to failing check (usually one line = one error)
+3. Do not approve until all checks pass (GitHub enforces this)
+
+---
 
 ---
 
@@ -172,9 +204,11 @@ Use this checklist when reviewing PRs that add or update UDA content.
 **Pre-commit hook (optional, for authors):**
 
 ```bash
-# Run schema validator locally before pushing
-npm run validate
+# Run all validators locally before committing
+npm run validate:schema && npm run validate:frontmatter && npm run validate:filenames && npm run lint:markdown
 ```
+
+If any validator fails, fix the issues and re-run before pushing.
 
 ---
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/ROUTING.md",
+                "file": "docs/VALIDATION.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "ROUTING"
+              "title": "VALIDATION"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 206.50329208374023
+    "width": 308.50328826904297
   },
   "right": {
     "id": "f93e14b826ac47a2",
@@ -187,41 +187,41 @@
   },
   "active": "88cfa9ee6c0e78c7",
   "lastOpenFiles": [
-    "docs/GOVERNANCE.md",
-    "docs/ROUTING.md",
     "README.md",
-    "examples/concept-example-annotated.md",
-    "examples/reference-example-annotated.md",
-    "templates/reference.template.md",
-    "templates/concept.template.md",
-    "templates/task.template.md",
-    "UDA Foundations and Scientific Basis.md",
-    "docs/CONTRIBUTOR_ONBOARDING.md",
-    "schemas/validate.js",
-    "schemas/uda-content.schema.json",
-    "examples/troubleshooting-example-annotated.md",
-    "examples/task-example-annotated.md",
-    "templates/troubleshooting.template.md",
     "docs/VALIDATION.md",
-    "schemas",
-    "examples",
-    "templates",
-    "docs",
-    "routing.template.md",
-    "troubleshooting.template.md",
-    "reference.template.md",
-    "concept.template.md",
-    "task-template.md",
-    "uda-content.schema.json",
-    "meta/TEMPLATE-GUIDE.md",
-    "docs/templates/concept-template.md",
-    "archive/README.md",
-    "archive/GOVERNANCE.md",
-    "docs/templates/reference-template.md",
-    "docs/templates/tasks-template.md",
-    "docs/templates",
-    "meta/STYLE.md",
-    "LICENSE",
-    "starter-kit"
+    "node_modules/js-yaml/README.md",
+    "node_modules/js-yaml/lib/type/timestamp.js",
+    "node_modules/js-yaml/lib/type/str.js",
+    "node_modules/js-yaml/lib/type/set.js",
+    "node_modules/js-yaml/lib/type/seq.js",
+    "node_modules/js-yaml/lib/type/pairs.js",
+    "node_modules/js-yaml/lib/type/omap.js",
+    "node_modules/js-yaml/lib/type/null.js",
+    "node_modules/js-yaml/lib/type/merge.js",
+    "node_modules/js-yaml/lib/type/map.js",
+    "node_modules/js-yaml/lib/type/int.js",
+    "node_modules/minipass/README.md",
+    "node_modules/package-json-from-dist/LICENSE.md",
+    "node_modules/commander/Readme.md",
+    "node_modules/ajv/README.md",
+    "node_modules/minimist/README.md",
+    "node_modules/minimist/CHANGELOG.md",
+    "node_modules/json-schema-traverse/README.md",
+    "node_modules/string-width-cjs/node_modules/emoji-regex/README.md",
+    "node_modules/wrap-ansi/readme.md",
+    "node_modules/entities/readme.md",
+    "node_modules/strip-ansi/readme.md",
+    "node_modules/get-stdin/readme.md",
+    "node_modules/markdownlint-micromark/README.md",
+    "node_modules/strip-ansi-cjs/node_modules/ansi-regex/readme.md",
+    "node_modules/strip-ansi-cjs/readme.md",
+    "node_modules/ignore/README.md",
+    "node_modules/run-con/README.md",
+    "node_modules/markdown-it/README.md",
+    "node_modules/mdurl/README.md",
+    "node_modules/mdurl/CHANGELOG.md",
+    "node_modules/brace-expansion/README.md",
+    "node_modules/uc.micro/README.md",
+    "node_modules/uc.micro/CHANGELOG.md"
   ]
 }

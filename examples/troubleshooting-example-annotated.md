@@ -5,11 +5,20 @@ version: "1.0.0"
 tags: ["database", "connection", "postgresql"]
 ---
 
-# Database Connection Refused Errors
+# Database Connection Refused and Timeout Errors
+
+## Prerequisites
+
+This guide assumes:
+- Basic familiarity with terminal/command line
+- Access to database server (for server-side checks)
+- Understanding of firewall/network concepts
+
+If unfamiliar with any of these, ask your database administrator or DevOps team for help.
 
 ## Problem Statement
 
-Your application can't connect to the database and returns a "Connection Refused" error. This could mean the database server isn't running, is unreachable, or the port is blocked.
+Your application can't connect to the database and returns a "Connection Refused" or "Connection Timeout" error. **Connection Refused** means the server immediately rejected the connection (common: server not running, port blocked). **Connection Timeout** means the request hung and gave up waiting (common: network routing issue, server slow). This guide covers both.
 
 ---
 
@@ -138,29 +147,65 @@ If connecting from a different machine, database must listen on all interfaces (
    ```bash
    ssh user@database-host
    ```
+   - *Note:* If you can't SSH, ask your database administrator to check the config.
 
 2. Find PostgreSQL config file (usually `/etc/postgresql/*/main/postgresql.conf`):
    ```bash
    grep "listen_addresses" /etc/postgresql/*/main/postgresql.conf
    ```
+   - *Note:* The command searches for the line containing `listen_addresses` and prints it.
 
 3. Should show: `listen_addresses = '*'` (not `'localhost'`)
+   - *Note:* `'*'` means listen on all network interfaces. `'localhost'` = local connections only.
 
 4. If it's `localhost`, edit the file:
    ```bash
    sudo nano /etc/postgresql/*/main/postgresql.conf
    ```
    - Change `listen_addresses = 'localhost'` to `listen_addresses = '*'`
+   - *Note:* Use Ctrl+W to search, then Ctrl+X to save in nano editor.
    - Save and exit
 
 5. Restart PostgreSQL:
    ```bash
    sudo systemctl restart postgresql
    ```
+   - *Note:* Restart is required for config changes to take effect. Existing connections will be dropped.
 
 ---
 
-### Resolution 5: Test Network Connectivity (Advanced)
+### Resolution 5: Check TLS/SSL Configuration Mismatch
+
+If your app requires TLS/SSL but the database server isn't configured for it (or vice versa), connection will fail.
+
+1. Check your application's connection string for TLS settings:
+   ```python
+   conn = psycopg2.connect(
+       host="database-host",
+       sslmode="require"
+   )
+   ```
+   - *Note:* Common values: `require` (must use TLS), `prefer` (use if available), `disable` (no TLS)
+
+2. Check if PostgreSQL server supports SSL:
+   ```bash
+   sudo grep "ssl" /etc/postgresql/*/main/postgresql.conf
+   ```
+   - *Note:* Should show `ssl = on` if enabled. If `off` or commented out, server doesn't support TLS.
+
+3. If server has `ssl = off` but your app requires TLS, choose one:
+   - Disable TLS in connection string (`sslmode = disable`)
+   - Or enable SSL on server (requires certificate; ask database administrator)
+
+4. Test connection after change:
+   ```bash
+   psql -h database-host -U postgres --set=sslmode=prefer
+   ```
+   - *Note:* `--set=sslmode=prefer` will use TLS if available, but continue if not.
+
+---
+
+### Resolution 6: Test Network Connectivity (Advanced)
 
 If all above pass but connection still fails, test network routing.
 
@@ -183,17 +228,29 @@ If all above pass but connection still fails, test network routing.
 
 If none of the above work:
 
-- **Collect logs:**
-  ```bash
-  sudo tail -50 /var/log/postgresql/postgresql.log
-  ```
+**Collect diagnostic information:**
+```bash
+sudo tail -50 /var/log/postgresql/postgresql.log
+sudo ss -tlnp | grep 5432
+telnet database-host 5432
+```
 
-- **Contact:** Database administrator or platform team
-- **Provide:** Connection string, error message, `telnet` output, firewall rules checked
+**Post an issue to your team with:**
+- Your connection string (redact passwords)
+- The exact error message
+- Output from commands above
+- Which resolutions 1–6 you've already tried
+
+**Contact points:**
+- **Internal:** Post in `#database-help` Slack channel or create ticket in [YOUR_JIRA_PROJECT]
+- **Vendor:** If using managed database (AWS RDS, Azure Database), open support ticket with AWS/Azure
+- **Database team:** Email [database-team@company.com] or page on-call DBA
 
 ---
 
 ## Related Documents
+
+**Note:** In this template repo, these links are examples. When creating your own Troubleshooting docs, replace these with actual links to your docs.
 
 - **Concept:** [Database Connection Concepts](../concepts/database-connections.md) — Understanding connection pooling and network issues
 - **Task:** [Set Up PostgreSQL Database Connection](../tasks/setup-postgres-connection.md) — Happy path configuration

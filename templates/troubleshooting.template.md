@@ -1,6 +1,6 @@
 ---
 type: "troubleshooting"
-title: ""
+title: "[Title: What problem does this troubleshoot?]"
 version: "1.0.0"
 tags: []
 ---

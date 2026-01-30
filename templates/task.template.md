@@ -1,6 +1,6 @@
 ---
 type: "task"
-title: ""
+title: "[Title: What task does this accomplish?]"
 version: "1.0.0"
 tags: []
 ---

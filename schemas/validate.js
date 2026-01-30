@@ -4,11 +4,13 @@
  * UDA Content Validator
  *
  * Validates UDA markdown files against the JSON schema.
- * Usage: node validate.js <file.md> [--fix]
+ * Usage: node validate.js [files...]
+ * If no files specified, validates all examples/*.md
  */
 
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob');
 const Ajv = require('ajv');
 const yaml = require('js-yaml');
 
@@ -16,16 +18,21 @@ const yaml = require('js-yaml');
 const schemaPath = path.join(__dirname, 'uda-content.schema.json');
 const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf-8'));
 
-// Initialize validator
+// Initialize validator with draft 2020-12 support
+// Remove the $schema reference since we're validating content, not meta-schema
+const schemaCopy = { ...schema };
+delete schemaCopy.$schema;
+
 const ajv = new Ajv();
-const validate = ajv.compile(schema);
+const validate = ajv.compile(schemaCopy);
 
 /**
  * Extract YAML frontmatter from markdown file
  */
 function extractFrontmatter(filePath) {
   const content = fs.readFileSync(filePath, 'utf-8');
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  // Handle both LF and CRLF line endings
+  const match = content.match(/^-{3}\r?\n([\s\S]*?)\r?\n-{3}/);
   
   if (!match) {
     throw new Error(`No frontmatter found in ${filePath}`);
@@ -81,42 +88,60 @@ function validateFilename(filePath) {
  * Main validation function
  */
 function main() {
-  const args = process.argv.slice(2);
+  let files = process.argv.slice(2);
 
-  if (args.length === 0) {
-    console.error('Usage: node validate.js <file.md> [--fix]');
+  // If no arguments provided, validate all examples
+  if (files.length === 0) {
+    files = glob.sync('examples/**/*.md');
+  } else if (files[0].includes('*')) {
+    // If glob pattern provided, expand it
+    files = glob.sync(files.join(' '));
+  }
+
+  if (files.length === 0) {
+    console.log('No files to validate');
+    process.exit(0);
+  }
+
+  console.log(`Validating ${files.length} file(s)...\n`);
+
+  let failures = 0;
+
+  files.forEach(filePath => {
+    if (!fs.existsSync(filePath)) {
+      console.error(`❌ File not found: ${filePath}`);
+      failures++;
+      return;
+    }
+
+    // Validate filename
+    const filenameResult = validateFilename(filePath);
+    if (!filenameResult.valid) {
+      console.error(`❌ Filename validation failed for ${filePath}:`);
+      console.error(`   ${filenameResult.error}`);
+      failures++;
+      return;
+    }
+
+    // Validate file structure
+    const result = validateFile(filePath);
+    if (!result.valid) {
+      console.error(`❌ Validation failed for ${filePath}:`);
+      console.error(`   ${result.error}`);
+      failures++;
+      return;
+    }
+
+    console.log(`✓ ${filePath}`);
+    console.log(`  Type: ${result.data.type} | Title: ${result.data.title} | Version: ${result.data.version}`);
+  });
+
+  if (failures > 0) {
+    console.error(`\n❌ ${failures} file(s) failed validation`);
     process.exit(1);
   }
 
-  const filePath = args[0];
-  const shouldFix = args.includes('--fix');
-
-  if (!fs.existsSync(filePath)) {
-    console.error(`File not found: ${filePath}`);
-    process.exit(1);
-  }
-
-  // Validate filename
-  const filenameResult = validateFilename(filePath);
-  if (!filenameResult.valid) {
-    console.error(`❌ Filename validation failed: ${filenameResult.error}`);
-    process.exit(1);
-  }
-
-  // Validate file structure
-  const result = validateFile(filePath);
-
-  if (!result.valid) {
-    console.error(`❌ Validation failed for ${filePath}:`);
-    console.error(result.error);
-    process.exit(1);
-  }
-
-  console.log(`✅ Validation passed for ${filePath}`);
-  console.log(`   Type: ${result.data.type}`);
-  console.log(`   Title: ${result.data.title}`);
-  console.log(`   Version: ${result.data.version}`);
-  process.exit(0);
+  console.log(`\n✅ All ${files.length} files passed schema validation`);
 }
 
 main();
