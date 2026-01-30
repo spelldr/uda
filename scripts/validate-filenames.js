@@ -17,7 +17,7 @@ const glob = require('glob');
 function validateFilename(filePath) {
   // Skip governance and infrastructure docs
   const skipPatterns = [
-    'docs',
+    'governance',
     'README',
     'UDA Foundations',
     '.template',

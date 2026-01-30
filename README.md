@@ -46,7 +46,7 @@ UDA is grounded in cognitive science:
 
 ### 1. Identify Your Doc Type
 
-Use the **[ROUTING.md](./docs/ROUTING.md)** decision tree (3 questions, < 2 min):
+Use the **[ROUTING.md](./governance/ROUTING.md)** decision tree (3 questions, < 2 min):
 
 - Is this about *how to do something*? → **Task**
 - Is this about *explaining why/what*? → **Concept**
@@ -61,7 +61,7 @@ Go to `templates/` folder:
 - `reference.template.md`
 - `troubleshooting.template.md`
 
-Copy, rename, and fill in.
+Copy, rename, and fill in. Then place the file in `docs/<type>/` (e.g., `docs/task/`).
 
 **If you use Obsidian:**
 1. Open this repo as a vault.
@@ -76,19 +76,19 @@ Copy, rename, and fill in.
 type: "task"              # Match your doc type
 title: "Deploy a Service" # Specific, searchable
 version: "1.0.0"          # Repo semantic version
-tags: ["deployment", "guide"]  # Domain + intent
+tags: ["deployment", "guide"]  # Topic + intent
 ---
 ```
 
 ### 4. Self-Review
 
-Check [VALIDATION.md](./docs/VALIDATION.md) before submitting (routing, metadata, structure).
+Check [VALIDATION.md](./governance/VALIDATION.md) before submitting (routing, metadata, structure).
 
 ### 5. Submit PR
 
 Automated checks validate schema + lint. Steward reviews for routing discipline.
 
-**Full onboarding guide:** [CONTRIBUTOR_ONBOARDING.md](./docs/CONTRIBUTOR_ONBOARDING.md) (30 min read)
+**Full onboarding guide:** [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md) (30 min read)
 
 ---
 
@@ -96,12 +96,21 @@ Automated checks validate schema + lint. Steward reviews for routing discipline.
 
 ```
 .
-├── docs/                              # Governance & learning
+├── docs/                              # Content by type
+│   ├── task/                          # Task docs (procedures)
+│   │   └── README.md
+│   ├── concept/                       # Concept docs (mental models)
+│   │   └── README.md
+│   ├── reference/                     # Reference docs (lookup data)
+│   │   └── README.md
+│   └── troubleshooting/               # Troubleshooting docs (error recovery)
+│       └── README.md
+│
+├── governance/                        # Governance & onboarding
 │   ├── ROUTING.md                     # Decision tree for doc types
 │   ├── GOVERNANCE.md                  # Authority, rules, lifecycle
 │   ├── VALIDATION.md                  # Reviewer checklist
-│   ├── CONTRIBUTOR_ONBOARDING.md      # Full learning path
-│   └── UDA Foundations and Scientific Basis.md  # Theory
+│   └── CONTRIBUTOR_ONBOARDING.md      # Full learning path
 │
 ├── templates/                         # Starter kits
 │   ├── task.template.md
@@ -135,7 +144,7 @@ Automated checks validate schema + lint. Steward reviews for routing discipline.
 
 ### For Learning
 
-- **[CONTRIBUTOR_ONBOARDING.md](./docs/CONTRIBUTOR_ONBOARDING.md)** — Start here if you're new
+- **[CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)** — Start here if you're new
   - Explains the philosophy
   - Walks through routing, templates, submission
   - FAQ section
@@ -147,19 +156,19 @@ Automated checks validate schema + lint. Steward reviews for routing discipline.
 
 ### For Contributor Decisions
 
-- **[ROUTING.md](./docs/ROUTING.md)** — "What type of doc should I write?"
+- **[ROUTING.md](./governance/ROUTING.md)** — "What type of doc should I write?"
   - Decision tree with examples
   - Edge case clarifications
   - Anti-patterns to avoid
 
-- **[VALIDATION.md](./docs/VALIDATION.md)** — "Is my doc ready to submit?"
+- **[VALIDATION.md](./governance/VALIDATION.md)** — "Is my doc ready to submit?"
   - Pre-merge checklist
   - Red flags vs. yellow flags
   - Common rejection reasons
 
 ### For Governance
 
-- **[GOVERNANCE.md](./docs/GOVERNANCE.md)** — "Who decides? What are the rules?"
+- **[GOVERNANCE.md](./governance/GOVERNANCE.md)** — "Who decides? What are the rules?"
   - Steward role and authority
   - Lifecycle (ingestion → maintenance → retirement)
   - Enforcement mechanisms (automated + manual)
@@ -171,10 +180,10 @@ Automated checks validate schema + lint. Steward reviews for routing discipline.
 
 ### As a Contributor
 
-1. **Read:** [ROUTING.md](./docs/ROUTING.md) (classify your doc)
-2. **Copy:** Template matching your doc type
+1. **Read:** [ROUTING.md](./governance/ROUTING.md) (classify your doc)
+2. **Copy:** Template matching your doc type into `docs/<type>/`
 3. **Write:** Fill in sections (follow template guidance)
-4. **Review:** Check [VALIDATION.md](./docs/VALIDATION.md) checklist
+4. **Review:** Check [VALIDATION.md](./governance/VALIDATION.md) checklist
 5. **Submit:** Create PR; automated checks run
 6. **Iterate:** Respond to Steward feedback
 7. **Merge:** After approval
@@ -249,12 +258,12 @@ node schemas/validate.js examples/task-example-annotated.md
 
 1. **Fork or clone this repo**
 2. **Replace examples** with your own content (keep templates and governance)
-3. **Customize** governance rules in [GOVERNANCE.md](./docs/GOVERNANCE.md) if needed (e.g., change "Steward" role name)
-4. **Invite team** to read [CONTRIBUTOR_ONBOARDING.md](./docs/CONTRIBUTOR_ONBOARDING.md)
+3. **Customize** governance rules in [GOVERNANCE.md](./governance/GOVERNANCE.md) if needed (e.g., change "Steward" role name)
+4. **Invite team** to read [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
 
 ### Option B: Adopt UDA for Existing Docs
 
-1. **Read** [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md) + [ROUTING.md](./docs/ROUTING.md)
+1. **Read** [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md) + [ROUTING.md](./governance/ROUTING.md)
 2. **Classify existing docs** using the routing decision tree (which ones are Task? Concept? etc.)
 3. **Refactor:** Split mixed-intent docs into separate Task + Concept + Reference files
 4. **Add frontmatter** to each doc (type, title, version, tags, body)
@@ -274,7 +283,7 @@ One person (or rotating) maintains UDA discipline:
 - **Maintains** templates and governance docs
 - **Handles** edge cases and conflicts
 
-**See [GOVERNANCE.md](./docs/GOVERNANCE.md) for full details.**
+**See [GOVERNANCE.md](./governance/GOVERNANCE.md) for full details.**
 
 ### Contributing Changes to UDA Itself
 
@@ -300,7 +309,7 @@ A: Use the ROUTING.md decision tree. Pick the *primary* purpose. Other purposes 
 
 **Q: Can I invent a new folder structure?**
 
-A: No. Folders organize by *domain* (Database, Authentication, Deployment), not by doc type or workflow. If your domain doesn't exist, ask Steward.
+A: No. Folders organize by **doc type** under `docs/` (task, concept, reference, troubleshooting). Use tags to capture topic or domain.
 
 **Q: What if I disagree with the routing decision?**
 
@@ -308,7 +317,7 @@ A: Discuss with Steward using ROUTING.md. If still ambiguous, the decision is: "
 
 **Q: Do I have to use semantic versioning?**
 
-A: Yes. All docs share the repo version (not individual versions). See [GOVERNANCE.md](./docs/GOVERNANCE.md) for versioning rules.
+A: Yes. All docs share the repo version (not individual versions). See [GOVERNANCE.md](./governance/GOVERNANCE.md) for versioning rules.
 
 ---
 
@@ -316,7 +325,7 @@ A: Yes. All docs share the repo version (not individual versions). See [GOVERNAN
 
 This is a **template repository** for UDA itself. To contribute to the UDA framework:
 
-1. **Read:** [docs/GOVERNANCE.md](./docs/GOVERNANCE.md)
+1. **Read:** [governance/GOVERNANCE.md](./governance/GOVERNANCE.md)
 2. **Propose:** Open an issue with your suggestion
 3. **Discuss:** Team consensus required for framework changes
 4. **Implement:** Update docs, examples, schema, governance as needed
@@ -334,10 +343,10 @@ This UDA framework is provided as-is for documentation teams. Adapt it to your n
 
 ## Questions?
 
-- **Beginner?** Start with [CONTRIBUTOR_ONBOARDING.md](./docs/CONTRIBUTOR_ONBOARDING.md)
-- **Stuck on routing?** See [ROUTING.md](./docs/ROUTING.md) decision tree
-- **Reviewing a doc?** Use [VALIDATION.md](./docs/VALIDATION.md) checklist
+- **Beginner?** Start with [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
+- **Stuck on routing?** See [ROUTING.md](./governance/ROUTING.md) decision tree
+- **Reviewing a doc?** Use [VALIDATION.md](./governance/VALIDATION.md) checklist
 - **Understanding the theory?** Read [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md)
-- **Setting governance?** See [GOVERNANCE.md](./docs/GOVERNANCE.md)
+- **Setting governance?** See [GOVERNANCE.md](./governance/GOVERNANCE.md)
 
 Welcome to UDA! 🚀

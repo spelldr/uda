@@ -46,9 +46,9 @@ How to confirm the task succeeded. What should the reader see/experience?
 
 ## Related Documents
 
-- **Concept:** [Link if deeper understanding needed](../concepts/example.md)
-- **Reference:** [Link if lookup data needed](../reference/example.md)
-- **Troubleshooting:** [Link if errors expected](../troubleshooting/example.md)
+- **Concept:** [Link if deeper understanding needed](../docs/concept/example.md)
+- **Reference:** [Link if lookup data needed](../docs/reference/example.md)
+- **Troubleshooting:** [Link if errors expected](../docs/troubleshooting/example.md)
 
 ---
 

@@ -31,6 +31,7 @@ npm run lint:markdown            # Markdown style check
 **Automatically on PR:**
 
 When you push a PR to GitHub, the `.github/workflows/validate-uda.yml` workflow automatically runs:
+
 1. All 4 checks above
 2. Results posted as GitHub Check on PR
 3. PR cannot merge if any check fails
@@ -38,6 +39,7 @@ When you push a PR to GitHub, the `.github/workflows/validate-uda.yml` workflow 
 **For Reviewers:**
 
 If you see ❌ validation failures on a PR:
+
 1. Check the GitHub Actions tab for detailed error messages
 2. Link author to failing check (usually one line = one error)
 3. Do not approve until all checks pass (GitHub enforces this)
@@ -67,7 +69,7 @@ If you see ❌ validation failures on a PR:
 - [ ] **`title`** is human-readable and meaningful (min 1 char, max ~80)
 - [ ] **`version`** matches repo version (semantic versioning, e.g., 1.0.0)
 - [ ] **`tags`** present (optional but recommended for discoverability)
-  - Suggestion: domain + intent (e.g., `["database", "tutorial"]`)
+  - Suggestion: topic + intent (e.g., `["database", "tutorial"]`)
 - [ ] **`body`** structured per doc type (not missing required fields)
 
 ### 3. Content Structure
@@ -119,11 +121,11 @@ If you see ❌ validation failures on a PR:
 - [ ] **Links are valid** (point to existing docs, not imaginary files)
 - [ ] **No circular dependencies** (A → B → A is okay for navigation, but check for confusion)
 
-### 6. Domain & Folder Placement
+### 6. Folder Placement (Doc Type)
 
-- [ ] **Folder structure aligned with governance** (organized by domain, not doc type)
+- [ ] **Folder structure aligned with governance** (docs/task, docs/concept, docs/reference, docs/troubleshooting)
 - [ ] **No new "misc", "other", or invented categories** created
-- [ ] **Domain folder meaningful** (reflects business/technical domain)
+- [ ] **Placed in the correct type folder** (matches frontmatter `type`)
 - [ ] **No overly nested paths** (prefer shallow, ~3 levels max)
 
 ### 7. Versioning & Metadata
@@ -149,7 +151,7 @@ If you see ❌ validation failures on a PR:
 → Auto-blocked by CI; author must fix
 
 ❌ **New folder structure invented** — "docs/guides/setup/best-practices/"
-→ Violates flat domain structure; request reorganization
+→ Violates type-based folder structure; request reorganization
 
 ❌ **Title too vague** — "Stuff You Should Know"
 → Request specific, searchable title
@@ -166,7 +168,7 @@ If you see ❌ validation failures on a PR:
 → Request steward to add contextual links
 
 ⚠️ **Ambiguous tags** — `["info"]`, `["stuff"]`
-→ Request more specific, domain-based tags
+→ Request more specific, topic-based tags
 
 ⚠️ **Long Task steps** — Single step > 3 sentences
 → Request split into sub-steps or link to Reference doc
@@ -183,6 +185,7 @@ If you see ❌ validation failures on a PR:
 **Result:** ☐ Approve | ☐ Request Changes | ☐ Reject
 
 **Comments:**
+
 ```
 [Detailed feedback, linking to ROUTING.md / VALIDATION.md sections if needed]
 ```

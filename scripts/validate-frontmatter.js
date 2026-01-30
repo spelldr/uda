@@ -22,7 +22,7 @@ function validateFrontmatter(filePath) {
   try {
     // Skip governance and infrastructure docs (they don't need UDA frontmatter)
     const skipPatterns = [
-      'docs',
+      'governance',
       'README',
       'UDA Foundations'
     ];

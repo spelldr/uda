@@ -93,8 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 308.50328826904297,
-    "collapsed": true
+    "width": 261.50329208374023
   },
   "right": {
     "id": "f93e14b826ac47a2",
@@ -204,16 +203,26 @@
   "active": "7bdfac6abc0f754b",
   "lastOpenFiles": [
     "UDA Foundations and Scientific Basis.md",
+    "README.md",
+    "governance/ROUTING.md",
+    "governance/CONTRIBUTOR_ONBOARDING.md",
+    "docs/concept/README.md",
+    "docs/reference/README.md",
+    "docs/task/README.md",
+    "docs/troubleshooting/README.md",
+    "docs/troubleshooting",
+    "docs/reference",
+    "docs/concept",
+    "docs/task",
+    "docs/hardware/dell-poweredge-r710-hardware-reference.md",
+    "docs/hardware",
+    "governance/VALIDATION.md",
+    "governance/GOVERNANCE.md",
+    "governance",
     "node_modules/markdownlint/lib/md060.mjs",
     "node_modules/markdownlint/lib/md059.mjs",
     "node_modules/markdownlint/lib/md058.mjs",
     "node_modules/markdownlint/lib/md056.mjs",
-    "node_modules/markdownlint/lib/md055.mjs",
-    "node_modules/markdownlint/lib/md054.mjs",
-    "node_modules/markdownlint/lib/md046.mjs",
-    "node_modules/markdownlint/lib/md025.mjs",
-    "node_modules/markdownlint/lib/md024.mjs",
-    "node_modules/markdownlint/lib/md014.mjs",
     "node_modules/micromark-factory-title/readme.md",
     "node_modules/micromark-util-classify-character/readme.md",
     "node_modules/micromark-util-html-tag-name/readme.md",
@@ -228,16 +237,6 @@
     "node_modules/micromark-util-symbol/readme.md",
     "node_modules/micromark-util-decode-numeric-character-reference/readme.md",
     "node_modules/decode-named-character-reference/readme.md",
-    "node_modules/micromark-extension-math/readme.md",
-    "node_modules/micromark-extension-gfm-table/readme.md",
-    "node_modules/micromark-util-encode/readme.md",
-    "node_modules/debug/README.md",
-    "node_modules/devlop/readme.md",
-    "node_modules/micromark-util-normalize-identifier/readme.md",
-    "node_modules/micromark-util-character/readme.md",
-    "node_modules/micromark-util-combine-extensions/readme.md",
-    "node_modules/micromark-util-chunked/readme.md",
-    "node_modules/micromark-util-subtokenize/readme.md",
-    "node_modules/micromark-util-resolve-all/readme.md"
+    "node_modules/micromark-extension-math/readme.md"
   ]
 }

@@ -49,9 +49,9 @@ How are entries organized? (Alphabetical, by frequency, by category?)
 
 ## Related Documents
 
-- **Concept:** [Deeper explanation](../concepts/example.md)
-- **Task:** [How to use this reference](../tasks/example.md)
-- **Troubleshooting:** [Common lookup errors](../troubleshooting/example.md)
+- **Concept:** [Deeper explanation](../docs/concept/example.md)
+- **Task:** [How to use this reference](../docs/task/example.md)
+- **Troubleshooting:** [Common lookup errors](../docs/troubleshooting/example.md)
 
 ---
 

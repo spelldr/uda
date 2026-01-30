@@ -51,16 +51,16 @@ Address what people often get wrong or assume about this concept.
 
 ## Related Concepts
 
-- [Related Concept 1](../concepts/example.md)
-- [Related Concept 2](../concepts/example.md)
+- [Related Concept 1](../docs/concept/example.md)
+- [Related Concept 2](../docs/concept/example.md)
 
 ---
 
 ## Practical Application
 
 Links to Task (how to use this) or Reference (detailed specs):
-- **Task:** [Example Task](../tasks/example.md)
-- **Reference:** [Detailed Reference](../reference/example.md)
+- **Task:** [Example Task](../docs/task/example.md)
+- **Reference:** [Detailed Reference](../docs/reference/example.md)
 
 ---
 

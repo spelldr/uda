@@ -5,7 +5,7 @@
  *
  * Validates UDA markdown files against the JSON schema.
  * Usage: node validate.js [files...]
- * If no files specified, validates all examples/*.md
+ * If no files specified, validates docs/<type>/*.md and examples/*.md
  */
 
 const fs = require('fs');
@@ -90,9 +90,10 @@ function validateFilename(filePath) {
 function main() {
   let files = process.argv.slice(2);
 
-  // If no arguments provided, validate all examples
+  // If no arguments provided, validate docs by type and examples
   if (files.length === 0) {
-    files = glob.sync('examples/**/*.md');
+    files = glob.sync('{docs,examples}/**/*.md');
+    files = files.filter(file => path.basename(file) !== 'README.md');
   } else if (files[0].includes('*')) {
     // If glob pattern provided, expand it
     files = glob.sync(files.join(' '));

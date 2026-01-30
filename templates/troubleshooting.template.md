@@ -74,9 +74,9 @@ If the above didn't work, escalate or try this advanced approach.
 
 ## Related Documents
 
-- **Concept:** [Understanding the problem domain](../concepts/example.md)
-- **Task:** [Normal setup (happy path)](../tasks/example.md)
-- **Reference:** [Error codes and meanings](../reference/error-codes.md)
+- **Concept:** [Understanding the problem domain](../docs/concept/example.md)
+- **Task:** [Normal setup (happy path)](../docs/task/example.md)
+- **Reference:** [Error codes and meanings](../docs/reference/error-codes.md)
 
 ---
 

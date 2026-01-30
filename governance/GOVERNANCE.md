@@ -7,8 +7,9 @@
 **Responsibility:** Maintain UDA doctrine and prevent entropy.
 
 **Authority:**
+
 - Enforce routing discipline (reject mixed-intent docs)
-- Approve new folder structures (must align with organizational domains, not doc types)
+- Approve exceptions to folder rules (content stays under docs/task, docs/concept, docs/reference, docs/troubleshooting)
 - Reject docs that violate schema constraints
 - Resolve doc-type ambiguities using ROUTING.md decision tree
 - Retire obsolete content
@@ -40,6 +41,7 @@
 - [ ] No "misc" or invented categories
 
 **Red flags:**
+
 - Doc satisfies multiple purposes → Request split
 - Author created new folder structure → Request alignment with governance
 - Task contains conceptual deep-dives → Extract to Concept doc
@@ -60,6 +62,7 @@
 **Version field in each doc:** Reflects the repo version when the doc was created/updated.
 
 **Governance change cycle:**
+
 - Changes to ROUTING.md, templates, or schema require GOVERNANCE review
 - Semantic version bump triggers repo-wide changelog
 - Existing docs inherit new version on edit/review
@@ -125,6 +128,7 @@
 ### "I think this should be a Task, but you say it's Concept"
 
 **Process:**
+
 1. Both parties reference ROUTING.md decision tree
 2. Walk through Decision 1, 2, 3 together
 3. If still ambiguous: **Primary intent wins** — what would 80% of readers search for?
@@ -132,7 +136,7 @@
 
 ### "Can I create a new folder called 'Setup & Configuration'?"
 
-**Answer:** No. Folders organize by *domain* (e.g., "Database", "API", "Deployment"), not by doc type or workflow. All doc types (Task, Concept, Reference, Troubleshooting) can live in the same domain folder, distinguished by metadata and file content.
+**Answer:** No. Content lives under `docs/` by type (`task`, `concept`, `reference`, `troubleshooting`). Use tags to capture topic or domain. Don’t invent new folders.
 
 ### "Can I deviate from the template?"
 
@@ -154,7 +158,7 @@
 **Track these quarterly:**
 
 - **Entropy index:** Fraction of docs that violate routing or schema (target: < 2%)
-- **Coverage:** Major domains represented? Are there orphaned docs?
+- **Coverage:** Major topics represented? Are there orphaned docs?
 - **Staleness:** Docs not updated in 6+ months (may need review)
 - **Merge velocity:** PR review time (target: < 48 hours for Steward)
 
@@ -165,6 +169,7 @@
 **Process:** Edit GOVERNANCE.md, propose in PR, discuss with team, merge after consensus.
 
 **When to update:**
+
 - New rules discovered in practice
 - Roles/authority structure changes
 - Enforcement mechanisms added/removed

@@ -4,30 +4,23 @@
 
 Use this decision tree to classify content into the correct UDA doc type.
 
-### Decision 1: Is this about *how to do something*?
-
-- **YES** → Go to [**Task** routing](#task-documents)
-- **NO** → Go to [Decision 2](#decision-2-is-this-about-explaining-whywhat-something-is)
-
-### Decision 2: Is this about explaining *why/what something is*?
-
-- **YES** → Go to [**Concept** routing](#concept-documents)
-- **NO** → Go to [Decision 3](#decision-3-is-the-user-stuck-or-experiencing-an-error)
-
-### Decision 3: Is the user stuck or experiencing an error?
-
-- **YES** → Go to [**Troubleshooting** routing](#troubleshooting-documents)
-- **NO** → Go to [**Reference** routing](#reference-documents)
+- Is this about _how to do something_? → [**Task**](#^task-documents)
+- Is this about _explaining why/what_? → [**Concept**](#^concept-documents)
+- Is the user _stuck with an error_? → [**Troubleshooting**](#^troubleshooting-documents)
+- Otherwise → [**Reference**](#^reference-documents)
 
 ---
 
 ## Detailed Routing Rules
 
-### TASK Documents
+^task-documents
+
+### Task Documents
 
 **Purpose:** Procedural execution. Get from A to B in minimum steps.
 
 **Signal Phrases:**
+
 - "How do I...?"
 - "Set up / configure / deploy..."
 - "Follow these steps to..."
@@ -35,27 +28,33 @@ Use this decision tree to classify content into the correct UDA doc type.
 - "Run this..."
 
 **Structure:**
+
 - Prerequisites (dependencies, preconditions)
 - Steps (numbered, one action per step)
 - Optional notes per step
 
 **Anti-patterns:**
-- Explaining *why* a step exists (belongs in Concept)
+
+- Explaining _why_ a step exists (belongs in Concept)
 - Troubleshooting failure paths (belongs in Troubleshooting)
 - Listing reference data (belongs in Reference)
 
 **Examples:**
+
 - "Deploy a Microservice"
 - "Configure SSH Keys"
 - "Initialize a Database Connection"
 
 ---
 
-### CONCEPT Documents
+^concept-documents
+
+### Concept Documents
 
 **Purpose:** Schema formation. Build mental models and understanding.
 
 **Signal Phrases:**
+
 - "What is...?"
 - "Understand..."
 - "Learn about..."
@@ -63,55 +62,33 @@ Use this decision tree to classify content into the correct UDA doc type.
 - "Design patterns / architecture..."
 
 **Structure:**
+
 - Summary (one sentence: core idea)
 - Sections (heading + content)
 - Optional: theory, examples, diagrams, relationships to other concepts
 
 **Anti-patterns:**
+
 - Numbered steps (belongs in Task)
 - Reference lookups (belongs in Reference)
 - Error recovery (belongs in Troubleshooting)
 
 **Examples:**
+
 - "API Authentication Models"
 - "Event-Driven Architectures"
 - "Cache Invalidation Strategies"
 
 ---
 
-### REFERENCE Documents
+^troubleshooting-documents
 
-**Purpose:** Lookup tables. Factual mappings without narrative.
-
-**Signal Phrases:**
-- "What does X mean?"
-- "Look up..."
-- "List of..."
-- "Glossary / API endpoints / configuration options..."
-- "Quick reference..."
-
-**Structure:**
-- Entries (key-value pairs)
-- Optional notes per entry
-
-**Anti-patterns:**
-- Procedural steps (belongs in Task)
-- Conceptual explanation (belongs in Concept)
-- Error diagnosis (belongs in Troubleshooting)
-
-**Examples:**
-- "HTTP Status Codes"
-- "Configuration Parameter Reference"
-- "Glossary of Terms"
-- "API Endpoint Catalog"
-
----
-
-### TROUBLESHOOTING Documents
+### Troubleshooting Documents
 
 **Purpose:** Error recovery. Start from symptom, map to causes and resolutions.
 
 **Signal Phrases:**
+
 - "Why am I getting...?"
 - "Error: ..."
 - "How do I fix...?"
@@ -119,19 +96,56 @@ Use this decision tree to classify content into the correct UDA doc type.
 - "Diagnosis and recovery"
 
 **Structure:**
+
 - Symptoms (observable problems; list by pattern)
 - Causes (why it happens)
 - Resolutions (fix attempts, ordered by likelihood)
 
 **Anti-patterns:**
+
 - Happy path procedures (belongs in Task)
 - Conceptual background (belongs in Concept)
 - Reference lookups (belongs in Reference)
 
 **Examples:**
+
 - "Connection Timeout Errors"
 - "Authentication Failures"
 - "Memory Leak Diagnosis"
+
+---
+
+^reference-documents
+
+### Reference Documents
+
+**Purpose:** Lookup tables. Factual mappings without narrative.
+
+**Signal Phrases:**
+
+- "What does X mean?"
+- "Look up..."
+- "List of..."
+- "Glossary / API endpoints / configuration options..."
+- "Quick reference..."
+
+**Structure:**
+
+- Entries (key-value pairs)
+- Optional notes per entry
+
+**Anti-patterns:**
+
+- Procedural steps (belongs in Task)
+- Conceptual explanation (belongs in Concept)
+- Error diagnosis (belongs in Troubleshooting)
+
+**Examples:**
+
+- "HTTP Status Codes"
+- "Configuration Parameter Reference"
+- "Glossary of Terms"
+- "API Endpoint Catalog"
 
 ---
 
@@ -169,9 +183,9 @@ Use this decision tree to classify content into the correct UDA doc type.
 
 2. **Route by reader intent, not author convenience.** Don't put Task + Concept in one document because they're related. Route by what the reader is trying to accomplish.
 
-3. **No "mixed" categories.** Don't create folders for "Setup & Concepts" or "Tasks & Troubleshooting." Folders organize by domain (e.g., "Database", "Authentication"), not by doc type.
+3. **No "mixed" categories.** Don’t create new category folders. Content lives under `docs/` by type (`task`, `concept`, `reference`, `troubleshooting`). Use tags to capture topic or domain.
 
-4. **Routing is binary at each decision point.** If a doc satisfies multiple purposes, choose the *primary* one. The others get separate docs with cross-links.
+4. **Routing is binary at each decision point.** If a doc satisfies multiple purposes, choose the _primary_ one. The others get separate docs with cross-links.
 
 5. **Metadata (tags, version, title) must be consistent.** Frontmatter enforces this across all types.
 
