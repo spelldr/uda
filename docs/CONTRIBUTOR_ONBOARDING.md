@@ -266,7 +266,6 @@ Folders organize by **domain**, not doc type:
 docs/
 ├── Database/           ← Domain (not "Task" or "Concept")
 │   ├── task-backup.md
-│   ├── concept-indexing.md
 │   ├── reference-query-syntax.md
 │   └── troubleshooting-slow-queries.md
 ├── Authentication/     ← Domain

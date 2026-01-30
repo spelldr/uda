@@ -9,6 +9,6 @@
   "newFileLocation": "current",
   "attachmentFolderPath": "./attachments",
   "useMarkdownLinks": true,
-  "showUnsupportedFiles": true,
+  "showUnsupportedFiles": false,
   "alwaysUpdateLinks": true
 }
