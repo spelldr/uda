@@ -1,0 +1,57 @@
+name: Validate UDA Schema & Lint
+
+on:
+  pull_request:
+    paths:
+      - '**.md'
+      - '**.json'
+      - '.github/workflows/*.yml'
+      - 'package.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Validate JSON Schema
+        run: npm run validate:schema
+        continue-on-error: false
+
+      - name: Lint Markdown
+        run: npm run lint:markdown
+        continue-on-error: false
+
+      - name: Check Frontmatter
+        run: npm run validate:frontmatter
+        continue-on-error: false
+
+      - name: Check Filenames
+        run: npm run validate:filenames
+        continue-on-error: false
+
+  comment:
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ UDA validation failed. Check the logs above for details.\n\nCommon issues:\n- Missing required frontmatter fields (type, title, version, body)\n- Schema validation failed\n- Markdown linting errors\n- Filename not lowercase with hyphens\n\nSee VALIDATION.md for details.'
+            })
