@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Domain Extension Template",
+  "description": "Template schema for extending UDA with domain-specific metadata. Copy and customize for your domain.",
+  "type": "object",
+  "properties": {
+    "domain": {
+      "type": "string",
+      "description": "Domain identifier (e.g., 'my-domain')"
+    },
+    "domainMeta": {
+      "type": "object",
+      "description": "Domain-specific metadata object",
+      "properties": {
+        "customField1": {
+          "type": "string",
+          "description": "Add your own fields here"
+        },
+        "customField2": {
+          "type": "string",
+          "description": "Another custom field"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "project": {
+    "name": "UDA Project",
+    "description": "Unified Documentation Architecture",
+    "version": "1.0.0"
+  },
+  "structure": {
+    "content": {
+      "enabled": true,
+      "location": "docs"
+    },
+    "domains": {
+      "enabled": true,
+      "location": "domains",
+      "available": [
+        "template",
+        "educational",
+        "api",
+        "product"
+      ]
+    },
+    "operations": {
+      "enabled": false,
+      "location": "operations",
+      "modules": [
+        "membership",
+        "publishing",
+        "finance",
+        "content-management"
+      ]
+    },
+    "automation": {
+      "enabled": false,
+      "location": "automation",
+      "features": [
+        "pipelines",
+        "analytics"
+      ]
+    }
+  },
+  "schemas": {
+    "corePath": "uda-core/schemas/uda-content.schema.json",
+    "pluginsPath": "schemas/plugins",
+    "plugins": [
+      {
+        "name": "uda-core",
+        "path": "uda-core/schemas/uda-content.schema.json",
+        "required": true,
+        "description": "Core UDA schema (4 doc types: task, concept, reference, troubleshooting)"
+      }
+    ],
+    "composition": "merge",
+    "validationMode": "strict"
+  },
+  "validation": {
+    "enableAutomated": true,
+    "runLocal": true,
+    "runOnCI": true,
+    "validators": [
+      {
+        "name": "schema",
+        "enabled": true,
+        "priority": 1,
+        "description": "JSON Schema validation against core + plugin schemas"
+      },
+      {
+        "name": "frontmatter",
+        "enabled": true,
+        "priority": 2,
+        "description": "Required frontmatter fields check (type, title, version)"
+      },
+      {
+        "name": "filenames",
+        "enabled": true,
+        "priority": 3,
+        "description": "Filename convention check (lowercase, hyphens, meaningful)"
+      },
+      {
+        "name": "markdown",
+        "enabled": true,
+        "priority": 4,
+        "description": "Markdown linting (headings, lists, line length)"
+      }
+    ]
+  },
+  "governance": {
+    "stewarded": true,
+    "stewardPath": "uda-core/governance",
+    "enforcementLevel": "strict",
+    "documents": {
+      "governance": "uda-core/governance/GOVERNANCE.md",
+      "routing": "uda-core/governance/ROUTING.md",
+      "validation": "uda-core/governance/VALIDATION.md"
+    }
+  },
+  "profiles": {
+    "minimal": {
+      "description": "Pure UDA core only (4 doc types, no extensions)",
+      "structure": {
+        "content": true,
+        "domains": false,
+        "operations": false,
+        "automation": false
+      }
+    },
+    "educational": {
+      "description": "UDA + educational domain (batting cages, rubrics, curriculum)",
+      "structure": {
+        "content": true,
+        "domains": true,
+        "operations": false,
+        "automation": false
+      },
+      "domains": [
+        "educational"
+      ]
+    },
+    "api": {
+      "description": "UDA + API domain (endpoint specs, parameters, error codes)",
+      "structure": {
+        "content": true,
+        "domains": true,
+        "operations": false,
+        "automation": false
+      },
+      "domains": [
+        "api"
+      ]
+    },
+    "product": {
+      "description": "UDA + product domain (feature guides, release notes, changelogs)",
+      "structure": {
+        "content": true,
+        "domains": true,
+        "operations": false,
+        "automation": false
+      },
+      "domains": [
+        "product"
+      ]
+    },
+    "enterprise": {
+      "description": "Full UDA with all domains, operations, and automation",
+      "structure": {
+        "content": true,
+        "domains": true,
+        "operations": true,
+        "automation": true
+      },
+      "domains": [
+        "educational",
+        "api",
+        "product"
+      ],
+      "allOperationsModules": true
+    }
+  }
+}
