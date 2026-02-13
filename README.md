@@ -1,8 +1,54 @@
 # Unified Documentation Architecture (UDA)
 
-A scientifically-grounded documentation system designed to minimize cognitive load, maximize findability, and enforce contributor discipline at scale.
+A scientifically-grounded, layered documentation system designed to minimize cognitive load, maximize findability, and enforce contributor discipline at scale.
 
-**This is a template repository.** It contains the UDA framework, templates, governance rules, and examples. Use this to bootstrap documentation for your team or project.
+**This is a template repository.** It contains the UDA framework, templates, governance rules, examples, and optional extensions for specialized domains and operations. Use this to bootstrap documentation for your team or project—from minimal pure UDA to enterprise setups with educational content, APIs, and operational workflows.
+
+---
+
+## What's New: Layered Architecture
+
+UDA now supports multiple configuration profiles, from minimal to enterprise:
+
+| Profile | Layers | Use Case |
+|---|---|---|
+| **Minimal** | Core UDA only | Small projects, pure implementation |
+| **Educational** | Core + educational domain | Learning platforms, courses, training |
+| **API** | Core + API domain | Software APIs, SDKs, protocols |
+| **Product** | Core + product domain | Product docs, features, release notes |
+| **Enterprise** | Core + all domains + operations + automation | Large-scale docs with publishing, membership, finance |
+
+**New in this version:**
+
+- 📦 **Modular domain packs** — Add educational, API, or product doc types without cluttering core
+- ⚙️ **Configuration system** — `uda.config.json` controls which layers are active
+- 🔌 **Schema plugins** — Extensible validation for domain-specific metadata
+- 📋 **Operational infrastructure** — Publishing gates, membership tiers, finance tracking
+- 🚀 **Advanced automation** — Multi-stage CI/CD, analytics, content metrics
+
+**See [ARCHITECTURE.md](ARCHITECTURE.md) for full design.**
+
+---
+
+## Quick: Choose Your Path
+
+**Just want pure UDA (4 doc types)?**  
+→ Read [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md), use `templates/`, follow ROUTING.md. **Ignore domains/ and operations/ folders.**
+
+**Building a learning platform or educational content?**  
+→ Set `uda.config.json` profile to `educational`. See [domains/README.md](domains/README.md) for batting cages, rubrics, curriculum templates.
+
+**Documenting an API or SDK?**  
+→ Set profile to `api`. See [domains/README.md](domains/README.md) for endpoint specs, error catalogs, protocol docs.
+
+**Product documentation with releases and features?**  
+→ Set profile to `product`. See [domains/README.md](domains/README.md) for feature guides, release notes, changelogs.
+
+**Enterprise setup with publishing gates, membership tiers, and financial tracking?**  
+→ Set profile to `enterprise`. See [ARCHITECTURE.md](ARCHITECTURE.md) + [operations/README.md](operations/README.md) for full infrastructure.
+
+**Want something custom?**  
+→ See [ARCHITECTURE.md](ARCHITECTURE.md) → [domains/CREATING_DOMAINS.md](domains/CREATING_DOMAINS.md) or [operations/CREATING_MODULES.md](operations/CREATING_MODULES.md).
 
 ---
 
@@ -94,49 +140,97 @@ Automated checks validate schema + lint. Steward reviews for routing discipline.
 
 ## Directory Structure
 
+The repository is organized by **layers**:
+
 ```
 .
+├── uda-core/                          # Layer 1: Immutable cognitive core
+│   ├── templates/                     # 4 core doc types
+│   ├── schemas/uda-content.schema.json
+│   └── governance/
+│       ├── ROUTING.md
+│       ├── GOVERNANCE.md
+│       └── VALIDATION.md
+│
 ├── docs/                              # Content by type
 │   ├── task/                          # Task docs (procedures)
-│   │   └── README.md
-│   ├── concept/                       # Concept docs (mental models)
-│   │   └── README.md
-│   ├── reference/                     # Reference docs (lookup data)
-│   │   └── README.md
+│   ├── concept/                       # Concept docs (understanding)
+│   ├── reference/                     # Reference docs (lookup)
 │   └── troubleshooting/               # Troubleshooting docs (error recovery)
-│       └── README.md
 │
-├── governance/                        # Governance & onboarding
-│   ├── ROUTING.md                     # Decision tree for doc types
-│   ├── GOVERNANCE.md                  # Authority, rules, lifecycle
-│   ├── VALIDATION.md                  # Reviewer checklist
-│   └── CONTRIBUTOR_ONBOARDING.md      # Full learning path
+├── domains/                           # Layer 2: Optional domain extensions
+│   ├── template/                      # Template for building custom domains
+│   ├── educational/                   # Batting cages, rubrics
+│   ├── api/                           # API endpoints, parameters
+│   ├── product/                       # Features, releases, changelogs
+│   ├── README.md                      # Domain pack overview
+│   └── CREATING_DOMAINS.md            # Guide to building domains
 │
-├── templates/                         # Starter kits
-│   ├── task.template.md
-│   ├── concept.template.md
-│   ├── reference.template.md
-│   └── troubleshooting.template.md
+├── operations/                        # Layer 3: Optional operational infrastructure
+│   ├── membership/                    # Membership tiers, access control
+│   ├── publishing/                    # Publishing gates, workflows
+│   ├── finance/                       # Revenue, costs, licensing
+│   ├── content-management/            # Lifecycle, deprecation, SEO
+│   ├── README.md                      # Operational overview
+│   └── CREATING_MODULES.md            # Guide to custom modules
 │
+├── automation/                        # Layer 4: Optional automation & CI/CD
+│   ├── pipelines/                     # GitHub Actions, publish workflows
+│   └── analytics/                     # Content metrics, engagement tracking
+│
+├── schemas/                           # Schema plugins (validation)
+│   ├── REGISTRY.md                    # Schema plugin directory
+│   ├── README.md                      # Plugin architecture
+│   └── plugins/                       # Domain & operational schemas
+│       ├── educational-extension.schema.json
+│       ├── api-extension.schema.json
+│       └── ...
+│
+├── governance/                        # Top-level governance hub
+│   ├── CONTRIBUTOR_ONBOARDING.md
+│   ├── EXTENSIBILITY.md               # Multi-layer extensibility guide
+│   └── ...
+│
+├── templates/                         # (Legacy: See uda-core/templates/)
 ├── examples/                          # Annotated samples
-│   ├── task-example-annotated.md
-│   ├── concept-example-annotated.md
-│   ├── reference-example-annotated.md
-│   └── troubleshooting-example-annotated.md
-│
-├── schemas/                           # Validation
-│   ├── uda-content.schema.json        # JSON Schema
-│   └── validate.js                    # Validator script
-│
-├── .github/workflows/                 # CI/CD
-│   ├── validate-uda.yml               # Schema + lint validation
-│   └── uda-ci.yml                     # Additional checks
-│
-├── .markdownlint.yml                  # Markdown linting config
-├── .editorconfig                      # Editor formatting
-├── uda-content.schema.json            # (Legacy; moved to schemas/)
+├── scripts/                           # Validation & automation
+├── uda.config.json                    # Project configuration
+├── ARCHITECTURE.md                    # Layered architecture design
+├── CONFIGURATION.md                   # Configuration options guide
 └── README.md                          # This file
 ```
+
+---
+
+## Getting Started
+
+### For Minimal UDA (Core Only)
+
+1. **Understand:** Read [UDA Foundations and Scientific Basis.md](./UDA%20Foundations%20and%20Scientific%20Basis.md)
+2. **Navigate:** Use [ROUTING.md](./uda-core/governance/ROUTING.md) to classify your doc type
+3. **Template:** Copy from `uda-core/templates/`
+4. **Review:** Check [VALIDATION.md](./uda-core/governance/VALIDATION.md)
+5. **Validate:** Run `npm run validate:all`
+6. **Submit:** Create PR for review
+
+### For Domain-Extended UDA (Educational, API, Product)
+
+1. **Identify:** Which domain matches your needs?
+2. **Configure:** Edit `uda.config.json` and set profile: `educational` | `api` | `product`
+3. **Review:** Read [domains/README.md](./domains/README.md)
+4. **Use templates:** Copy specialized templates from `domains/<domain>/templates/`
+5. **Validate:** Now includes domain schema validation
+6. **Coordinate:** Ensure team knows about new doc types via domain governance
+
+### For Enterprise (All Layers)
+
+1. **Setup:** Set profile to `enterprise` in `uda.config.json`
+2. **Architecture:** Read [ARCHITECTURE.md](./ARCHITECTURE.md)
+3. **Configure:** Review [CONFIGURATION.md](./CONFIGURATION.md)
+4. **Domains:** Enable via [domains/README.md](./domains/README.md)
+5. **Operations:** Configure via [operations/README.md](./operations/README.md)
+6. **Automation:** Setup CI/CD from [automation/](./automation/) templates
+7. **Implement:** Full multi-layer governance, publishing gates, membership tiers
 
 ---
 
@@ -154,48 +248,69 @@ Automated checks validate schema + lint. Steward reviews for routing discipline.
   - Why this design works
   - Academic references
 
+- **[ARCHITECTURE.md](./ARCHITECTURE.md)** — Understand the layered design
+  - Cognitive core vs. extensions
+  - Configuration and profiles
+  - Schema plugin system
+
 ### For Contributor Decisions
 
-- **[ROUTING.md](./governance/ROUTING.md)** — "What type of doc should I write?"
+- **[uda-core/governance/ROUTING.md](./uda-core/governance/ROUTING.md)** — "What type of doc should I write?"
   - Decision tree with examples
   - Edge case clarifications
   - Anti-patterns to avoid
 
-- **[VALIDATION.md](./governance/VALIDATION.md)** — "Is my doc ready to submit?"
+- **[uda-core/governance/VALIDATION.md](./uda-core/governance/VALIDATION.md)** — "Is my doc ready to submit?"
   - Pre-merge checklist
   - Red flags vs. yellow flags
   - Common rejection reasons
 
-### For Governance
+- **[domains/README.md](./domains/README.md)** — Using domain-specific doc types
+  - When to enable domains
+  - Available domains (educational, api, product)
+  - Creating custom domains
 
-- **[GOVERNANCE.md](./governance/GOVERNANCE.md)** — "Who decides? What are the rules?"
+### For Governance & Configuration
+
+- **[uda-core/governance/GOVERNANCE.md](./uda-core/governance/GOVERNANCE.md)** — Core UDA authority and rules
   - Steward role and authority
   - Lifecycle (ingestion → maintenance → retirement)
-  - Enforcement mechanisms (automated + manual)
-  - Conflict resolution
+  - Enforcement mechanisms
+
+- **[CONFIGURATION.md](./CONFIGURATION.md)** — Configure project layers
+  - Changing profiles (minimal, educational, enterprise)
+  - Schema plugin activation
+  - Validation options
+
+- **[operations/README.md](./operations/README.md)** — Operational infrastructure
+  - Publishing, membership, finance, content management
+  - When to enable operational modules
 
 ---
 
 ## Workflow
 
-### As a Contributor
+### As a Contributor (Pure UDA or Domain-Extended)
 
-1. **Read:** [ROUTING.md](./governance/ROUTING.md) (classify your doc)
-2. **Copy:** Template matching your doc type into `docs/<type>/`
-3. **Write:** Fill in sections (follow template guidance)
-4. **Review:** Check [VALIDATION.md](./governance/VALIDATION.md) checklist
-5. **Submit:** Create PR; automated checks run
-6. **Iterate:** Respond to Steward feedback
-7. **Merge:** After approval
+1. **Learn:** [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
+2. **Route:** Use [uda-core/governance/ROUTING.md](./uda-core/governance/ROUTING.md) to pick your doc type
+3. **Template:** Copy from `uda-core/templates/` (or domain template if using domains)
+4. **Write:** Fill in markdown and frontmatter
+5. **Review:** Check [uda-core/governance/VALIDATION.md](./uda-core/governance/VALIDATION.md)
+6. **Validate:** Run `npm run validate:all` (includes domain schemas if enabled)
+7. **Submit:** Create PR; automated checks run
+8. **Iterate:** Respond to feedback
+9. **Merge:** After approval
 
 ### As a Steward (Reviewer)
 
 1. **Automated checks pass?** (CI/CD validates schema + lint)
-2. **Routing correct?** (Use ROUTING.md as arbiter)
+2. **Routing correct?** (Use [uda-core/governance/ROUTING.md](./uda-core/governance/ROUTING.md) as arbiter)
 3. **Single intent?** (No mixed-purpose docs)
-4. **Metadata complete?** (type, title, version, tags, body structure)
-5. **Cross-links valid?** (Point to real docs)
-6. **Approve or request changes** (explain using ROUTING.md / VALIDATION.md)
+4. **Domain routed correctly?** (If using domains, check domain-specific routing)
+5. **Metadata complete?** (type, title, version, tags, body structure)
+6. **Cross-links valid?** (Point to real docs)
+7. **Approve or request changes** (explain using governance docs)
 
 ---
 
@@ -250,50 +365,47 @@ node schemas/validate.js examples/task-example-annotated.md
 - **`validate-uda.yml`** — Schema + lint validation (blocks merge if failed)
 - **`uda-ci.yml`** — Governance checks (alerts if governance docs change)
 
----
-
 ## Getting Started with UDA
 
-### Option A: Use as a Template
+### Quick Setup (Minimal)
 
 1. **Fork or clone this repo**
-2. **Replace examples** with your own content (keep templates and governance)
-3. **Customize** governance rules in [GOVERNANCE.md](./governance/GOVERNANCE.md) if needed (e.g., change "Steward" role name)
-4. **Invite team** to read [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
+2. **Copy templates** from `uda-core/templates/` (templates/ is legacy, don't use)
+3. **Use ROUTING** from `uda-core/governance/ROUTING.md`
+4. **Replace examples** with your own content (keep governance)
+5. **Invite team** to read [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
 
-### Option B: Adopt UDA for Existing Docs
+### Extended Setup (With Domains)
 
-1. **Read** [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md) + [ROUTING.md](./governance/ROUTING.md)
-2. **Classify existing docs** using the routing decision tree (which ones are Task? Concept? etc.)
-3. **Refactor:** Split mixed-intent docs into separate Task + Concept + Reference files
-4. **Add frontmatter** to each doc (type, title, version, tags, body)
-5. **Validate** using [schemas/validate.js](./schemas/validate.js)
-6. **Set up CI/CD** workflows from `.github/workflows/`
+1. **Edit `uda.config.json`** and set profile: `educational`, `api`, `product`, or `enterprise`
+2. **Enable domains** in structure configuration
+3. **Read** [domains/README.md](./domains/README.md)
+4. **Use domain templates** from `domains/<domain>/templates/`
+5. **Validate** includes domain schema plugins automatically
 
----
+### Enterprise Setup (All Layers)
 
-## Governance
+1. **Edit `uda.config.json`** and set profile to `enterprise`
+2. **Read** [ARCHITECTURE.md](./ARCHITECTURE.md)
+3. **Configure** [CONFIGURATION.md](./CONFIGURATION.md)
+4. **Enable operations** [operations/README.md](./operations/README.md)
+5. **Setup CI/CD** from [automation/](./automation/) templates
+6. **Implement** publishing gates, membership tiers, financial tracking
 
-### The Steward Role
+## Architecture & Extensibility
 
-One person (or rotating) maintains UDA discipline:
+UDA is designed in **layers** with progressive enhancement:
 
-- **Approves** new PRs for routing correctness
-- **Rejects** mixed-intent docs (requests split)
-- **Maintains** templates and governance docs
-- **Handles** edge cases and conflicts
+- **Layer 1 (Cognitive Core):** Immutable 4-type system in `uda-core/` — never changes
+- **Layer 2 (Domain Packs):** Optional in `domains/` — add specialized doc types (educational, API, product)
+- **Layer 3 (Operations):** Optional in `operations/` — publishing, membership, finance, content management
+- **Layer 4 (Automation):** Optional in `automation/` — CI/CD, analytics, content metrics
 
-**See [GOVERNANCE.md](./governance/GOVERNANCE.md) for full details.**
-
-### Contributing Changes to UDA Itself
-
-If you want to change templates, routing rules, or governance:
-
-1. **Open an issue** or discussion (not a direct PR)
-2. **Propose change** with rationale
-3. **Team consensus** required
-4. **Update version** in repo (MAJOR/MINOR/PATCH)
-5. **Merge** and document in CHANGELOG.md
+**Learn more:**
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — Full design overview
+- [domains/CREATING_DOMAINS.md](./domains/CREATING_DOMAINS.md) — Build custom domains
+- [operations/CREATING_MODULES.md](./operations/CREATING_MODULES.md) — Build custom operations
+- [schemas/REGISTRY.md](./schemas/REGISTRY.md) — Schema plugin registry
 
 ---
 
@@ -303,50 +415,69 @@ If you want to change templates, routing rules, or governance:
 
 A: No. Split into two docs: Task (how-to) + Concept (why/what). Link them together. This improves findability and reduces cognitive load.
 
-**Q: What if my doc doesn't fit one type perfectly?**
+**Q: What if my doc doesn't fit one of the 4 core types?**
 
-A: Use the ROUTING.md decision tree. Pick the *primary* purpose. Other purposes get separate docs.
+A: Use the [uda-core/governance/ROUTING.md](./uda-core/governance/ROUTING.md) decision tree. Pick the *primary* purpose. If none fit, consider using a **domain extension** (educational, API, product) or creating a **custom domain** for your specialized type.
 
 **Q: Can I invent a new folder structure?**
 
-A: No. Folders organize by **doc type** under `docs/` (task, concept, reference, troubleshooting). Use tags to capture topic or domain.
+A: Core UDA content stays under `docs/<type>/`. Domain content goes in `domains/<domain>/`. Operations go in `operations/<module>/`. Use tags for topic/domain classification. See [CONFIGURATION.md](./CONFIGURATION.md).
 
 **Q: What if I disagree with the routing decision?**
 
-A: Discuss with Steward using ROUTING.md. If still ambiguous, the decision is: "What would 80% of readers search for?" That's your primary intent.
+A: Discuss with Steward using [uda-core/governance/ROUTING.md](./uda-core/governance/ROUTING.md). If still ambiguous: "What would 80% of readers search for?" determines primary intent.
+
+**Q: Can I layer multiple domains?**
+
+A: Yes! Set `uda.config.json` to enable multiple domains: `["educational", "api", "product"]`. Schemas compose automatically.
 
 **Q: Do I have to use semantic versioning?**
 
-A: Yes. All docs share the repo version (not individual versions). See [GOVERNANCE.md](./governance/GOVERNANCE.md) for versioning rules.
+A: Yes. All docs share the repo version (not individual versions). See [uda-core/governance/GOVERNANCE.md](./uda-core/governance/GOVERNANCE.md) for versioning rules.
 
----
+**Q: What's the difference between using pure UDA vs. a domain?**
 
-## Contributing
+A: Pure UDA = 4 doc types (task, concept, reference, troubleshooting). Domains add specialized types (e.g., batting-cage, endpoint-spec). Use domains when you need domain-specific validation or templates. Keep core UDA minimal for simplicity.
 
-This is a **template repository** for UDA itself. To contribute to the UDA framework:
+**Q: Can I customize operational modules?**
 
-1. **Read:** [governance/GOVERNANCE.md](./governance/GOVERNANCE.md)
-2. **Propose:** Open an issue with your suggestion
-3. **Discuss:** Team consensus required for framework changes
-4. **Implement:** Update docs, examples, schema, governance as needed
-5. **Version:** Bump semantic version
-
-To use UDA for your own documentation, see **"Getting Started with UDA"** above.
-
----
-
-## License
-
-This UDA framework is provided as-is for documentation teams. Adapt it to your needs.
+A: Yes! See [operations/CREATING_MODULES.md](./operations/CREATING_MODULES.md) for building custom modules (publishing, membership, finance, or your own).
 
 ---
 
 ## Questions?
 
-- **Beginner?** Start with [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
-- **Stuck on routing?** See [ROUTING.md](./governance/ROUTING.md) decision tree
-- **Reviewing a doc?** Use [VALIDATION.md](./governance/VALIDATION.md) checklist
-- **Understanding the theory?** Read [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md)
-- **Setting governance?** See [GOVERNANCE.md](./governance/GOVERNANCE.md)
+- **Getting started?** → [Getting Started](#getting-started) section above
+- **New to UDA?** → [CONTRIBUTOR_ONBOARDING.md](./governance/CONTRIBUTOR_ONBOARDING.md)
+- **Stuck on routing?** → [uda-core/governance/ROUTING.md](./uda-core/governance/ROUTING.md)
+- **Reviewing a doc?** → [uda-core/governance/VALIDATION.md](./uda-core/governance/VALIDATION.md)
+- **Understanding theory?** → [UDA Foundations](./UDA%20Foundations%20and%20Scientific%20Basis.md)
+- **Setting governance?** → [uda-core/governance/GOVERNANCE.md](./uda-core/governance/GOVERNANCE.md)
+- **Configuring layers?** → [CONFIGURATION.md](./CONFIGURATION.md)
+- **Building custom domains?** → [domains/CREATING_DOMAINS.md](./domains/CREATING_DOMAINS.md)
+- **Building custom operations?** → [operations/CREATING_MODULES.md](./operations/CREATING_MODULES.md)
+- **Understanding architecture?** → [ARCHITECTURE.md](./ARCHITECTURE.md)
+
+---
+
+## Contributing to UDA
+
+**To contribute to the UDA framework itself:**
+
+1. **Read:** [uda-core/governance/GOVERNANCE.md](./uda-core/governance/GOVERNANCE.md)
+2. **Propose:** Open an issue with your suggestion
+3. **Discuss:** Team consensus required for framework changes
+4. **Implement:** Update docs, examples, schema, governance
+5. **Version:** Bump semantic version in `uda.config.json`
+
+**To use UDA for your own documentation project:** See **Getting Started** section above.
+
+---
+
+## License
+
+This UDA framework is provided as-is for documentation teams. Adapt and use freely.
+
+---
 
 Welcome to UDA! 🚀
