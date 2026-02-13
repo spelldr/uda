@@ -19,7 +19,7 @@ Track revenue, costs, licensing, and ROI for documentation.
 **Validation:**
 - Revenue models are recognized
 - Cost calculations are positive
-- Dateformats are valid (ISO 8601)
+- Date formats are valid (ISO 8601)
 - ROI metrics are reasonable
 
 ## When to Use This Module
